@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Search">
+		<message>
+			<![CDATA[STANDARD SEARCH LAYOUT DESC]]>
+		</message>
+	</layout>
+	<state>
+		<name>Search</name>
+		<description>STANDARD SEARCH LAYOUT DESC</description>
+		<params>
+			<param name="search_areas" type="radio" default="0" label="Utiliser les champs de recherche par chekbox ?" description="Permet d'afficher ou non la recherche par chekbox.">
+				<option value="0">Oui</option>
+				<option value="1">Non</option>
+			</param>
+			<param name="show_date" type="radio" default="0" label="Utiliser la recherche par date ?" description="Si vous choisissez cette option un champ de recherche par date apparaitra dans la recherche.">
+				<option value="0">Oui</option>
+				<option value="1">Non</option>
+			</param>
+		</params>
+	</state>
+</metadata>

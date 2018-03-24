@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: entry.xml 21 2011-03-29 17:14:01Z chdemko $ -->
+<form>
+	<fieldset>
+		<field name="id_entrepot"
+			type="text"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC"
+			size="10"
+			readonly="true"
+			class="readonly"
+                        default="0"
+		/>
+                <field name="url"
+			type="text"
+			label="COM_NEMATERIA_HEADERS_URL_ENTREPOT"
+			description="wgrwg"
+			class="inputbox"
+			size="80"
+			required="true"
+		 />
+		<field name="title"
+			type="text"
+			label="COM_NEMATERIA_HEADERS_TITLE"
+			description="wgwg"
+			class="text"
+			size="50"
+			required="true"
+		 />
+                 <field name="description"
+			type="textarea"
+			label="COM_NEMATERIA_DESCRIPTION"
+			description="wggg"
+			class="text"
+			size="80"
+			required="false"
+		 />
+		<field name="mail"
+			type="text"
+			label="COM_NEMATERIA_EMAIL"
+			description="wgwg"
+			class="inputbox"
+			size="100"
+			required="false"
+		 />
+                 <field name="earliestDatestamp"
+			type="text"
+			label="COM_NEMATERIA_DATE"
+			description="wg"
+			class="inputbox"
+			size="100"
+			required="false"
+		 />
+                 <field name="granularity"
+			type="text"
+			label="COM_NEMATERIA_GRANULARITY"
+			description="wgwgr"
+			class="inputbox"
+			size="100"
+			required="false"
+		 />
+                 
+                 <field name="identifier"
+			type="text"
+			label="COM_NEMATERIA_IDENTIFER"
+			description="wgwg"
+			class="inputbox"
+			size="30"
+			required="false"
+		 />
+                <field name="config" type="filelist"
+			label="COM_NEMATERIA_CONFIG_ENTREPOT"
+                        default=""
+                        directory="administrator/components/com_nemateria/configuration"
+			description="COM_DICTIONARY_FIELD_LANGUAGE_DESC"
+			class="inputbox"
+                        required="true"
+                        hide_default="true"
+		/>
+        </fieldset>
+        <fields name="store">
+		<fieldset name="jstore" label="COM_NEMATERIA_SUBMENU_ENTREPOT">
+
+			<field name="spacer" 
+                            type="spacer"	
+                            label="COM_NEMATERIA_EXPLANATION"
+                        />
+
+		</fieldset>
+	</fields>
+</form>
