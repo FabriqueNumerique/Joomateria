@@ -1,0 +1,8 @@
+# Nous ne garderons que les fichiers qui nous intéressent
+*
+!administrator/language/en-GB/*
+!administrator/language/fr-FR/*
+!language/en-GB/*
+!language/fr-FR/*
+!administrator/components/com_nemateria/*
+!components/com_nemateria/*
