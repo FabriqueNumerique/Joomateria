@@ -19,11 +19,11 @@ JTable::addIncludePath(JPATH_ROOT.'/administrator/components/com_nemateria/table
  */
  
  
-class ExlineoModelContient  extends JModelItem { 
+class NemateriaModelContient  extends JModelItem {
 
 	
 	
-	protected $context = 'com_exlineo.contient';   
+	protected $context = 'com_nemateria.contient';
 	/**
 	 * Method to auto-populate the model state.
 	 *

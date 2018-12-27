@@ -13,7 +13,7 @@
                 <fieldset name="request">
                         <field name="champ" type="list" default="" label="Choisissez un champ de recherche" description="">
 						  <option value=""></option>
-						  <option value="id_record">Id des collections</option>
+						  <option value="id_notice">Id des collections</option>
 						</field>
 						<field
                                 name="valeur"

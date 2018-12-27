@@ -10,9 +10,9 @@
 	</layout>
 	<fields name="request">
 		<fieldset name="request"
-			addfieldpath="/administrator/components/com_exlineo/models/fields"
+			addfieldpath="/administrator/components/com_nemateria/models/fields"
 		>
-			<field name="id_record"
+			<field name="id_notice"
 				type="modal_contient"
 				description="Contient_SELECT_DESC"
 				label="Select Contient"

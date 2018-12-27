@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
 
  
-class ExlineoViewsets  extends JViewLegacy 
+class NemateriaViewCollections  extends JViewLegacy
 {
 
 	protected $state = null;
@@ -85,7 +85,7 @@ class ExlineoViewsets  extends JViewLegacy
 		}
 		else
 		{
-			$this->params->def('page_heading', JText::_('COM_Exlineo_DEFAULT_PAGE_TITLE'));
+			$this->params->def('page_heading', JText::_('COM_NEMATERIA_DEFAULT_PAGE_TITLE'));
 		}
 
 		$id = (int) @$menu->query['id'];

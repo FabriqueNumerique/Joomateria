@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="controller.php" server="ftp.immaterielles.org/www/" local="130463639506626000" remote="130519692000000000" Dst="2" />
-<file name="exlineo.php" server="ftp.immaterielles.org/www/" local="130463639535636000" remote="130519692000000000" Dst="2" />
-<file name="index.html" server="ftp.immaterielles.org/www/" local="130463639553636000" remote="130519692000000000" Dst="2" />
-<file name="router.php" server="ftp.immaterielles.org/www/" local="130463639698626000" remote="130519692000000000" Dst="2" />
+<file name="controller.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665297790000000" remote="131665297790000000" Dst="1" />
+<file name="router.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131676020850000000" remote="131676020850000000" Dst="1" />
+<file name="nemateria.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665335210000000" remote="131665335210000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662823660000000" remote="131662823660000000" Dst="1" />
 </dwsync>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="index.html" server="ftp.immaterielles.org/www/" local="130462837026554132" remote="130416949200000000" Dst="2" />
-<file name="record.php" server="ftp.immaterielles.org/www/" local="130462837034374132" remote="130416949200000000" Dst="2" />
-<file name="set.php" server="ftp.immaterielles.org/www/" local="130462837035674132" remote="130416949200000000" Dst="2" />
-<file name="store.php" server="ftp.immaterielles.org/www/" local="130462837036564132" remote="130416949200000000" Dst="2" />
+<file name="entrepot.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131644732450000000" remote="131644732450000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131641121310000000" remote="131641121310000000" Dst="1" />
+<file name="contient.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131667271330000000" remote="131667271330000000" Dst="1" />
+<file name="collection.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131674924590000000" remote="131674924590000000" Dst="1" />
+<file name="notice.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131667060320000000" remote="131667060320000000" Dst="1" />
 </dwsync>

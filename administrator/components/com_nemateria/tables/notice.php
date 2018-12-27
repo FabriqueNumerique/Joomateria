@@ -19,7 +19,7 @@ jimport('joomla.database.table');
 /**
  * Entry Table class of l21oai25 component
  */
-class nemateriaTableNotice extends JTable
+class NemateriaTableNotice extends JTable
 {
 	/**
 	 * Constructor

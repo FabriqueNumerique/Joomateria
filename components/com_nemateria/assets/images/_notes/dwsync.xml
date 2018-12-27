@@ -9,4 +9,13 @@
 <file name="prev.png" server="ftp.immaterielles.org/www/" local="131102971582199926" remote="131102980540000000" Dst="2" />
 <file name="liens.png" server="ftp.immaterielles.org/www/" local="131522752333732648" remote="131522760100000000" Dst="2" />
 <file name="pdf.png" server="ftp.immaterielles.org/www/" local="131523021874632692" remote="131523021920000000" Dst="2" />
+<file name="controls.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820500000000" remote="131662820500000000" Dst="1" />
+<file name="prev.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820560000000" remote="131662820560000000" Dst="1" />
+<file name="pdf.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820550000000" remote="131662820550000000" Dst="1" />
+<file name="next.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820540000000" remote="131662820540000000" Dst="1" />
+<file name="bx_loader.gif" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820470000000" remote="131662820470000000" Dst="1" />
+<file name="loading.gif" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820520000000" remote="131662820520000000" Dst="1" />
+<file name="close.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820480000000" remote="131662820480000000" Dst="1" />
+<file name="liens.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820510000000" remote="131662820510000000" Dst="1" />
+<file name="media_texte.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820530000000" remote="131662820530000000" Dst="1" />
 </dwsync>

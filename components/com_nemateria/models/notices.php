@@ -18,9 +18,9 @@ jimport('joomla.application.component.modellist');
  * @package     Joomla.Site
  * @subpackage  Exlineo
  */
-class NoticeModelNotices extends JModelList
+class NemateriaModelNotices extends JModelList
 {
-	/**
+    /**
 	 * Constructor.
 	 *
 	 * @param   array  $config  An optional associative array of configuration settings.
@@ -28,6 +28,9 @@ class NoticeModelNotices extends JModelList
 	 * @see     JController
 	 * @since   1.6
 	 */
+	public static $listeSeries; // Liste complète des séries
+	public static $colSeries; // Serie actuelle
+    
 	public function __construct($config = array())
 	{
 		if (empty($config['filter_fields']))
@@ -59,14 +62,15 @@ class NoticeModelNotices extends JModelList
 	          	          'metadata', 'a.metadata',
 	          	          'unique_identifier', 'a.unique_identifier',
 	          	          'local_link', 'a.local_link',
-	          	          'id_notice', 'a.id_notice',
+	          	          'id_collection', 'c.id_collection',
 	          			);
 
 			$app = JFactory::getApplication();
 
 		}
-
 		parent::__construct($config);
+		
+		self::$listeSeries = array();
 	}
 
 	/**
@@ -128,49 +132,112 @@ class NoticeModelNotices extends JModelList
 	 * @return  JDatabaseQuery
 	 * @since   1.6
 	 */
+
 	protected function getListQuery()
 	{
-		// Create a new query object.
-		$db = $this->getDbo();
-		$query = $db->getQuery(true);
-		$user = JFactory::getUser();
+		// On récupère les données transmises depuis le menu
 		$app = JFactory::getApplication();
-
-		$select_fields = $this->getState('list.select', 'a.*'); 
+		$menu = $app->getMenu()->getActive();
+		// EXLINEO - Gestion des champs 'Collection' (lid_collection) et du type de collection pour l'affichage (tpl)
+		$this->menuparams = $menu;
+		$ids_collection = $menu->query['id_collection'];
+		$type_collection = $menu->query['type'];
 		
-		// Select the required fields from the table.
-		$query->select( $select_fields);
+		// Traitement sur les collections saisies pour faire les requêtes
+		if(is_array($ids_collection)){
+			$collec = '(';
+			
+			foreach($ids_collection as $i => $j){
+				if($i < count($ids_collection)-1){
+					$collec .= 'c.id_collection = '.$j.' OR ';
+				}else{
+					$collec .= 'c.id_collection = '.$j.')';
+				}
+			}
+			
+		}else{
+			$collec = 'c.id_collection = '.$ids_collection;
+		}
 		
-		$query->from('#__l21_oai25_records AS a');
-
-	
+        // ETAPE 1 - Identifier les titres des collections
+        $colDB = $this->getDbo();
+		$colDB->setQuery("SELECT description, title, name FROM #__nemateria_collections as c WHERE $collec ");
+		$col = $colDB->loadObject();
+        
+        $colTitre = $col->title;
+        $colNom = $col->name;
+        
+        // ETAPE 2 - ALLER CHERCHER LES SERIES DANS LES NOTICES DES COLLECTIONS
+        $series = $this->getDbo();
+		$series->setQuery("SELECT DISTINCT SUBSTRING(champs, LOCATE('isPartOf=', champs)+9, LOCATE('accessRights', champs) - LOCATE('isPartOf=', champs) - 9) FROM #__nemateria_notices WHERE champs LIKE '%relation=".$colTitre."%'");
+        
+		// LISTE DES THEMES ABORDES
+		self::$listeSeries = $series->loadColumn();
+        
+        // Série sélectionnée s'il y a lieu
+        if(JRequest::getVar('serie')){
+            self::$colSeries = JRequest::getVar('serie');
+        }else{
+            self::$colSeries = self::$listeSeries[0];
+        }
+        
+        // Ajout de la requête sur la série
+        $collec .= "AND champs LIKE '%isPartOf=".self::$colSeries."%'";
+            
+        // ETAPE 3 - SELECTIONNER LES NOTICES
+        $db = $this->getDbo();
+        $user = JFactory::getUser();
+		$query = $db->getQuery(true);
+		$select_fields = $this->getState('list.select', 'a.*');
+		
+		$query->select('*');
+		$query->from('#__nemateria_notices AS a');
+		// $query->join('INNER', '#__nemateria_contient AS c ON a.id_record = c.id_record');
+		$query->join('INNER', '#__nemateria_contient AS c ON a.id_notice = c.id_notice');
+		// $query->where('c.id_set = '.$valeur.' AND LENGTH(a.title) > 0');
+		$query->where($collec.' AND LENGTH(a.title) > 0');
+			
 		// Filter by published state
 		$published = $this->getState('filter.published');
+		
+		$tmp = '';
+		
 		if (is_numeric($published))
 		{
-			$query->where('a.published = ' . (int) $published);
-		}
-		elseif ($published === '')
+			$tmp .= 'a.published = ' . (int) $published;
+			
+		}elseif ($published === '')
 		{
-			$query->where('(a.published = 0 OR a.published = 1)');
+			$tmp .= '(a.published = 0 OR a.published = 1)';
 		}
-	
-   
+		
+		if($ids_collection != ''){
+			// $tmp .= ' AND id_notice='.$ids_collection;
+		}
+		
 		// Filter by search in name.
 		$search = $this->getState('filter.search');
-		if (!empty($search))
-		{
-			$query->where('LOWER(a.name) LIKE ' . $this->_db->Quote('%' . $search . '%'));		
-		}
-
-
+		
 		// Add the list ordering clause.
 		$orderCol = $this->state->get('list.ordering', 'a.title');
 		$orderDirn = $this->state->get('list.direction', 'asc');
 		
 		$query->order($db->escape($orderCol . ' ' . $orderDirn));
-
+		
+		$this->setState('list.limit', 0); // 0 = unlimited
+		
 		return $query;
 	}
+    
+    // Afficher les séries dans la vue
+    public function getSeries()
+	{
+        return self::$listeSeries;
+	}
+	// Retourner la valeur de la série actuelle
+    public function getSeriesActu()
+	{
+        return self::$colSeries;
+    }
 }
  

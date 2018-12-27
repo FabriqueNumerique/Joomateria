@@ -16,4 +16,13 @@
 <file name="documents_lies.php" server="ftp.immaterielles.org/www/" local="131215335218149258" remote="131215335240000000" Dst="2" />
 <file name="onglets_texte.php" server="ftp.immaterielles.org/www/" local="131309326783617255" remote="131309326920000000" Dst="1" />
 <file name="valeurs_bdd_texte.php" server="ftp.immaterielles.org/www/" local="131255875251221919" remote="131255875320000000" Dst="1" />
+<file name="jwplayer.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820690000000" remote="131662820690000000" Dst="1" />
+<file name="interactions.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820660000000" remote="131662820660000000" Dst="1" />
+<file name="onglets_texte.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820710000000" remote="131662820710000000" Dst="1" />
+<file name="infos.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820650000000" remote="131662820650000000" Dst="1" />
+<file name="documents_lies.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820640000000" remote="131662820640000000" Dst="1" />
+<file name="onglets.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131682939780000000" remote="131682939780000000" Dst="1" />
+<file name="valeurs_bdd_texte.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820730000000" remote="131662820730000000" Dst="1" />
+<file name="valeurs_sequences.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820740000000" remote="131662820740000000" Dst="1" />
+<file name="valeurs_bdd.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131682941180000000" remote="131682941180000000" Dst="1" />
 </dwsync>

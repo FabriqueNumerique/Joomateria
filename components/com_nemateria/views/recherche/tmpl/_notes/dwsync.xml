@@ -21,4 +21,19 @@
 <file name="default_audio.php" server="ftp.immaterielles.org/www/" local="131523874406721721" remote="131523874430000000" Dst="2" />
 <file name="default_multi.php" server="ftp.immaterielles.org/www/" local="131523874527881699" remote="131523874550000000" Dst="2" />
 <file name="default_image_onglets.php" server="ftp.immaterielles.org/www/" local="131062188050345143" remote="131062188120000000" Dst="2" />
+<file name="default_multi.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_image_gallerie.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_video.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_image.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_image_onglets.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_texte.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="15-04-28_default_image.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301130000000" remote="131665301130000000" Dst="1" />
+<file name="default_multimedia.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131675920340000000" remote="131675920340000000" Dst="1" />
+<file name="default_image - Copie [2].php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_image - Copie.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_pdf.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301140000000" remote="131665301140000000" Dst="1" />
+<file name="default_audio.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301130000000" remote="131665301130000000" Dst="1" />
+<file name="default.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131668725080000000" remote="131668725080000000" Dst="1" />
+<file name="default.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301130000000" remote="131665301130000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665301150000000" remote="131665301150000000" Dst="1" />
 </dwsync>

@@ -14,4 +14,11 @@
 <file name="next.png" server="ftp.immaterielles.org/www/" local="130519619040000000" remote="130519619040000000" Dst="2" />
 <file name="play.png" server="ftp.immaterielles.org/www/" local="130519619040000000" remote="130519619040000000" Dst="2" />
 <file name="index.html" server="ftp.immaterielles.org/www/" local="130519655030000000" remote="130519655030000000" Dst="1" />
+<file name="previous.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662821020000000" remote="131662821020000000" Dst="1" />
+<file name="pause.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662821000000000" remote="131662821000000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820970000000" remote="131662820970000000" Dst="1" />
+<file name="close.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820960000000" remote="131662820960000000" Dst="1" />
+<file name="loading.gif" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820980000000" remote="131662820980000000" Dst="1" />
+<file name="next.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820990000000" remote="131662820990000000" Dst="1" />
+<file name="play.png" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662821010000000" remote="131662821010000000" Dst="1" />
 </dwsync>

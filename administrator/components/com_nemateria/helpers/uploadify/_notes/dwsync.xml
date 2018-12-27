@@ -8,4 +8,12 @@
 <file name="uploadify.php" server="ftp.immaterielles.org/www/" local="130462836966284132" remote="130416949200000000" Dst="2" />
 <file name="uploadify.fla" server="ftp.immaterielles.org/www/" local="130462836966474132" remote="130416949200000000" Dst="2" />
 <file name="uploadify.swf" server="ftp.immaterielles.org/www/" local="130462836971544132" remote="130416949200000000" Dst="2" />
+<file name="uploadify.fla" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517180000000" remote="131639517180000000" Dst="1" />
+<file name="expressInstall.swf" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517120000000" remote="131639517120000000" Dst="1" />
+<file name="uploadify.allglyphs.swf" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517150000000" remote="131639517150000000" Dst="1" />
+<file name="check.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517110000000" remote="131639517110000000" Dst="1" />
+<file name="uploadify.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517190000000" remote="131639517190000000" Dst="1" />
+<file name="JPATH_COMPONENT_ADMINISTRATORDSlogsDSlog.txt" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517080000000" remote="131639517080000000" Dst="1" />
+<file name="uploadify.swf" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517210000000" remote="131639517210000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639517130000000" remote="131639517130000000" Dst="1" />
 </dwsync>

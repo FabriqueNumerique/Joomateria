@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="Recordlist">
+	<layout title="LISTE DE NOTICES">
 		<help
-			key = "RecordLIST_DESC"
+			key = "Choisir une liste de notices en les triant avec une option"
 		/>
 		<message>
-			<![CDATA[RecordLIST_DESC]]>
+			<![CDATA[Choisir une liste de notices en les triant avec une option]]>
 		</message>
 	</layout>
-		<!-- Add fields to the parameters object for the layout. -->
-	<fields name="params">
+	<!-- Add fields to the parameters object for the layout.-->
+	<fields name="request">
+		<!-- EXLINEO - Ajout d'un champ listant les collections et d'un champ pour choisir le type de collection -->
+		<fieldset name="request"
+			addfieldpath="/administrator/components/com_nemateria/models/fields"
+		>
+			<field
+				name="id_collection"
+				type="sql"
+				label="CHOISISSEZ UNE COLLECTION"
+				query="SELECT id_collection, title FROM #__nemateria_collections"
+				key_field="id_collection"
+				value_field="title"
+				required="true"
+				multiple="true"
+			/>
+			
+			<field 
+				   name="type"
+				   type="list"
+				   default="multimedia"
+				   label="CHOISISSEZ UN TYPE"
+				   required="true"
+				   description="">
+						<option value="">Choisissez le type de collection</option>
+					  	<option value="images">Images</option>
+						<option value="multimedia">Multimédia</option>
+			</field>
+
+			<field 
+				   name="gabarit"
+				   type="list"
+				   default=""
+				   label="GABARIT"
+				   required="false"
+				   description="">
+						<option value="">Choisissez un gabarit</option>
+					  	<option value="">Liste</option>
+						<option value="vignettes">Vignettes</option>
+			</field>
+            
+		</fieldset>
 	</fields>
 </metadata>

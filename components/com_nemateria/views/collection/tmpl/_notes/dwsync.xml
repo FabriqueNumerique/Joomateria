@@ -6,4 +6,16 @@
 <file name="default.php" server="ftp.immaterielles.org/www/" local="130463639801636000" remote="130519692000000000" Dst="2" />
 <file name="default.xml" server="ftp.immaterielles.org/www/" local="130463639802636000" remote="130519692000000000" Dst="2" />
 <file name="index.html" server="ftp.immaterielles.org/www/" local="130463639802636000" remote="130519692000000000" Dst="2" />
+<file name="default_image.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029590000000" remote="131681029590000000" Dst="1" />
+<file name="default_image_onglets.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029600000000" remote="131681029600000000" Dst="1" />
+<file name="default.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131679306430000000" remote="131679306430000000" Dst="1" />
+<file name="default.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681039510000000" remote="131681039510000000" Dst="1" />
+<file name="default_texte.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029570000000" remote="131681029570000000" Dst="1" />
+<file name="default_multimedia.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029580000000" remote="131681029580000000" Dst="1" />
+<file name="default_image_gallerie.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029590000000" remote="131681029590000000" Dst="1" />
+<file name="default_multi.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029590000000" remote="131681029590000000" Dst="1" />
+<file name="default_pdf.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029580000000" remote="131681029580000000" Dst="1" />
+<file name="default_video.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029570000000" remote="131681029570000000" Dst="1" />
+<file name="default_audio.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131681029600000000" remote="131681029600000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662823310000000" remote="131662823310000000" Dst="1" />
 </dwsync>

@@ -1,50 +1,41 @@
 <?php
 // no direct access
 defined('_JEXEC') or die('Restricted access');
+require_once(JPATH_ROOT.DIRECTORY_SEPARATOR.'components/com_nemateria/assets/lib/actions.php');
 ?>
-<div class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>"><h2><?php echo $this->params->get('page_title');  ?></h2></div>
-<h3><?php echo $this->item->title; ?></h3>
-<div class="contentpane">
-	<div><h4>Quelques informations intéréssantes</h4></div>
-		<div>
-		Id_collection: <?php echo $this->item->id_collection; ?>
-	</div>
-		
-		<div>
-		Titre: <?php echo $this->item->title; ?>
-	</div>
-		
-		<div>
-		Description: <?php echo $this->item->description; ?>
-	</div>
-		
-		<div>
-		Id_entrepot: <?php echo $this->item->id_store; ?>
-	</div>
-		
-		<div>
-		Spec: <?php echo $this->item->spec; ?>
-	</div>
-		
-		<div>
-		Nom: <?php echo $this->item->name; ?>
-	</div>
-		
-		<div>
-		Createur: <?php echo $this->item->creator; ?>
-	</div>
-		
-		<div>
-		Autre_langage: <?php echo $this->item->other_langage; ?>
-	</div>
-		
-		<div>
-		Type: <?php echo $this->item->type; ?>
-	</div>
-		
-		<div>
-		Id_collection: <?php echo $this->item->id_collection; ?>
-	</div>
-		
-	</div>
- 
+<div class="componentheading<?php echo $this->escape($this->get('pageclass_sfx')); ?>"><h2><?php echo $this->params->get('page_title');  ?></h2></div>
+
+<div id="recherche">
+    <h3>Des éléments présents</h3>
+    <?php foreach ($this->items as $i => $item) :
+        //you may want to do this anywhere else
+        $item->slug	= $item->alias ? ($item->id_notice.':'.$item->alias) : $item->id_notice;
+        $link = JRoute::_('index.php?option=com_nemateria&view=notice&id='. $item->slug);
+
+        // Création des variables à exploiter
+        // $champs_str = str_replace( "\n" , "&" , $item->champs);
+        $vars = set_variables($item->champs);
+        ?>
+
+        <div class="resultat <?php if(isset($item->format)) echo gere_type($item->format); ?>">
+            <div class="meta">
+                <p><?php  if(isset($vars['extent'])) echo $vars['extent']; ?></p>
+                <?php  if(isset($sequences)) echo '<p>'.$sequences.' séquences</p>'; ?>
+                <p>Réf. : <?php  echo $item->identifier; ?></p>
+                <p>Date : <?php  echo $item->date; ?></p>
+            </div>
+            <div class="picto">
+                <p><img src="<?php echo JURI::root(); ?>images/icones/media_<?php if(isset($item->format)) echo gere_type($item->format); ?>.png" width="50" height="50"></p>
+                <p><a href="<?php echo $link ?>"><img src="<?php echo JURI::root(); ?>images/icones/media_lecture.png" width="50" height="50"></a></p>
+            </div>
+            <div class="image"> <img src="<?php echo JURI::root(); ?>images/collections/collection_mary_hella_200.jpg" alt="" width="200" height="200" class="image"></div>
+            <div class="infos">
+                <h3><a href="<?php echo $link ?>"><?php  echo $item->title.' ('.$item->id_notice.')'; ?></a></h3>
+                <p><?php  if(isset($vars['accrualMethod'])) echo $vars['accrualMethod'].", "; if(isset($vars['accrualPeriodicity'])) echo $vars['accrualPeriodicity']; ?></p>
+                <p><?php  echo $item->description; ?></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <!-- AJOUT DE LA PAGINATION JOOMLA -->
+    <?php echo $this->pagination->getListFooter(); ?>
+</div>

@@ -6,4 +6,7 @@
 <file name="default.php" server="ftp.immaterielles.org/www/" local="130463639719626000" remote="130519692000000000" Dst="2" />
 <file name="default.xml" server="ftp.immaterielles.org/www/" local="130463639722646000" remote="130519692000000000" Dst="2" />
 <file name="index.html" server="ftp.immaterielles.org/www/" local="130463639722646000" remote="130519692000000000" Dst="2" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665335210000000" remote="131665335210000000" Dst="1" />
+<file name="default.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665335210000000" remote="131665335210000000" Dst="1" />
+<file name="default.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131668720300000000" remote="131668720300000000" Dst="1" />
 </dwsync>

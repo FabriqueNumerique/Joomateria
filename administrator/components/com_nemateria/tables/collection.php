@@ -32,5 +32,33 @@ class NemateriaTableCollection extends JTable
 	{
 		parent::__construct('#__nemateria_collections', 'id_collection', $db);
 	}
-	
+
+    public function bind($array, $ignore = '')
+    {
+
+        return parent::bind($array, $ignore);
+    }
+
+    /**
+     * Overloaded check method to ensure data integrity
+     *
+     * @access public
+     * @return boolean True on success
+     * @since 1.0
+     */
+    public function check()
+    {
+
+
+
+        /** check for valid name */
+        /**
+        if (trim($this->title) == '') {
+        $this->setError(JText::_('Your Set must contain a title.'));
+        return false;
+        }
+         **/
+
+        return true;
+    }
 }

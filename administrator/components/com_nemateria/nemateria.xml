@@ -1,75 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="3.0" method="upgrade">
-    <name>com_nemateria</name>
-    <author>Exlineo</author>
-    <creationDate>February 2018</creationDate>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>contact@exlineo.com</authorEmail>
-    <authorUrl>www.exlineo.com</authorUrl>
-    <version>1.0</version>
-    <description>COM_NEMATERIA_XML_DESCRIPTION</description>
-
-    <files folder="site">
-        <filename>nemateria.php</filename>
-        <filename>index.html</filename>
-        <filename>controller.php</filename>
-        <filename>router.php</filename>
-        <folder>css</folder>
-        <folder>helpers</folder>
-        <folder>images</folder>
-        <folder>js</folder>
-        <folder>models</folder>
-        <folder>views</folder>
-    </files>
-
-    <languages folder="site">
-        <language tag="fr-FR">language/fr-FR/fr-FR.com_nemateria.ini</language>
-    </languages>
-
-    <administration>
-        <menu>COM_NEMATERIA</menu>
-        <submenu>
-            <menu
-                    view="accueil"
-                    img="../administrator/components/com_nemateria/assets/images/ico.png"
-            >COM_NEMATERIA_MENU_ACCUEIL</menu>
-            <menu
-                    view="entrepots"
-                    img="../administrator/components/com_nemateria/assets/images/folder_red_mini.png"
-            >COM_NEMATERIA_MENU_ENTREPOTS</menu>
-            <menu
-                    view="collections"
-                    img="../administrator/components/com_nemateria/assets/images/folder_green_mini.png"
-            >COM_NEMATERIA_MENU_COLLECTIONS</menu>
-            <menu
-                    view="notices"
-                    img="../administrator/components/com_nemateria/assets/images/folder_blue_mini.png"
-        </submenu>
-
-        <files folder="admin">
-            <filename>index.html</filename>
-            <filename>nemateria.php</filename>
-            <filename>controller.php</filename>
-            <filename>helpers.php</filename>
-            <!-- fichiers assets -->
-            <folder>assets</folder>
-            <!-- fichiers controllers -->
-            <folder>controllers</folder>
-            <!-- fichiers helpers -->
-            <folder>helpers</folder>
-            <!-- fichiers models -->
-            <folder>models</folder>
-            <!-- fichiers SQL -->
-            <folder>sql</folder>
-            <!-- fichier tables -->
-            <folder>tables</folder>
-            <!-- fichiers views -->
-            <folder>views</folder>
-        </files>
-
-        <languages folder="admin">
-            <language tag="fr-FR">language/fr-FR/fr-FR.com_nemateria.ini</language>
-            <language tag="fr-FR">language/fr-FR/fr-FR.com_nemateria.sys.ini</language>
-        </languages>
-    </administration>
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_nemateria</name>
+    <author>exlineo</author>
+    <creationDate>February 2018</creationDate>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>contact@exlineo.com</authorEmail>
+    <authorUrl>www.exlineo.com</authorUrl>
+    <version>1.0</version>
+    <description>COM_NEMATERIA_XML_DESCRIPTION</description>
+
+    <files folder="site">
+        <filename>nemateria.php</filename>
+        <filename>index.html</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>css</folder>
+        <folder>helpers</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+    </files>
+
+    <languages folder="site">
+        <language tag="fr-FR">language/fr-FR/fr-FR.com_nemateria.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.com_nemateria.sys.ini</language>
+    </languages>
+
+    <administration>
+        <menu>COM_NEMATERIA</menu>
+        <submenu>
+            <menu
+                    view="accueil"
+                    img="../administrator/components/com_nemateria/assets/images/ico.png"
+            >COM_NEMATERIA_MENU_ACCUEIL</menu>
+            <menu
+                    view="entrepots"
+                    img="../administrator/components/com_nemateria/assets/images/folder_red_mini.png"
+            >COM_NEMATERIA_MENU_ENTREPOTS</menu>
+            <menu
+                    view="collections"
+                    img="../administrator/components/com_nemateria/assets/images/folder_green_mini.png"
+            >COM_NEMATERIA_MENU_COLLECTIONS</menu>
+            <menu
+                    view="notices"
+                    img="../administrator/components/com_nemateria/assets/images/folder_blue_mini.png"
+        </submenu>
+
+        <files folder="admin">
+            <filename>index.html</filename>
+            <filename>nemateria.php</filename>
+            <filename>controller.php</filename>
+            <filename>helpers.php</filename>
+            <!-- fichiers assets -->
+            <folder>assets</folder>
+            <!-- fichiers controllers -->
+            <folder>controllers</folder>
+            <!-- fichiers helpers -->
+            <folder>helpers</folder>
+            <!-- fichiers models -->
+            <folder>models</folder>
+            <!-- fichiers SQL -->
+            <folder>sql</folder>
+            <!-- fichier tables -->
+            <folder>tables</folder>
+            <!-- fichiers views -->
+            <folder>views</folder>
+        </files>
+
+        <languages folder="admin">
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_nemateria.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_nemateria.sys.ini</language>
+        </languages>
+    </administration>
 </extension>

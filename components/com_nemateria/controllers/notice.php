@@ -15,7 +15,7 @@ jimport('joomla.application.component.controller');
 /**
  * ExlineoRecord Controller
  *
- * @package    Exlineo
+ * @package    Nemateria
  * @subpackage Controllers
  */
 class NemateriaControllerNotice extends JControllerLegacy

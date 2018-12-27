@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
 
  
-class NemateeriaViewCollection  extends JViewLegacy
+class NemateriaViewCollection  extends JViewLegacy
 {
 
 	protected $form;

@@ -31,12 +31,12 @@ abstract class NemateriaHelperRoute
 	public static function getNemateriaRoute($id, $catid)
 	{
 		$needles = array(
-			'contient'  => array((int) $id)
+			'notices'  => array((int) $id)
 		);
 		//Create the link
-		$link = 'index.php?option=com_nemateria&view=contient&id='. $id;
+		$link = 'index.php?option=com_nemateria&view=notices&id_notice='. $id;
 		if ($catid > 1) {
-			$categories = JCategories::getInstance('Contient');
+			$categories = JCategories::getInstance('Notice');
 			$category = $categories->get($catid);
 			if ($category) {
 				$needles['category'] = array_reverse($category->getPath());
@@ -45,7 +45,7 @@ abstract class NemateriaHelperRoute
 			}
 		}
 
-		if ($item = ExlineoHelperRoute::_findItem($needles)) {
+		if ($item = NemateriaHelperRoute::_findItem($needles)) {
 			$link .= '&Itemid='.$item;
 		};
 
@@ -74,7 +74,7 @@ abstract class NemateriaHelperRoute
 			throw new Exception('First parameter must be JCategoryNode');			
 		}
 	
-		$catviews = ExlineoHelper::getCategoryViews();
+		$catviews = NemateriaHelper::getCategoryViews();
 		$extensionviews = array_flip($catviews);
 		$view = $extensionviews[$category->extension];
 		

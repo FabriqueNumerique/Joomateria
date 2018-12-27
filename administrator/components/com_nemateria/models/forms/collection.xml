@@ -11,10 +11,10 @@
 			class="readonly"
                         default="0"
 		/>
-                <field name="id_entrepot"
-                        label="COM_NEMATERIA_SELECT_ENTREPOT"
-                />
-                <field name="spec"
+        <field name="id_entrepot"
+               label="COM_NEMATERIA_SELECT_ENTREPOT"
+        />
+        <field name="spec"
 			type="text"
 			label="COM_NEMATERIA_SPEC"
 			description="wgrwg"

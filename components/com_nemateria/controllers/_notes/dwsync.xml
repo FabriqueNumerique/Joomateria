@@ -2,22 +2,17 @@
 <dwsync>
 <file name="contient.php" server="ftp.exlineo.com/www/" local="130463639511636000" remote="130463638200000000" Dst="2" />
 <file name="contients.php" server="ftp.exlineo.com/www/" local="130463639513626000" remote="130463638200000000" Dst="2" />
-<file name="record.php" server="ftp.exlineo.com/www/" local="130463639519076000" remote="130463638200000000" Dst="2" />
-<file name="records.php" server="ftp.exlineo.com/www/" local="130463639520636000" remote="130463638200000000" Dst="2" />
 <file name="index.html" server="ftp.exlineo.com/www/" local="130463639517636000" remote="130463638200000000" Dst="2" />
-<file name="set.php" server="ftp.exlineo.com/www/" local="130463639524076000" remote="130463638200000000" Dst="2" />
-<file name="sets.php" server="ftp.exlineo.com/www/" local="130463639523626000" remote="130463638200000000" Dst="2" />
-<file name="store.php" server="ftp.exlineo.com/www/" local="130463639525636000" remote="130463638200000000" Dst="2" />
-<file name="stores.php" server="ftp.exlineo.com/www/" local="130463639528636000" remote="130463638200000000" Dst="2" />
 <file name="recherche.php" server="ftp.exlineo.com/www/" local="130463650844856000" remote="130463650200000000" Dst="2" />
 <file name="contient.php" server="ftp.immaterielles.org/www/" local="130463639511636000" remote="130519692000000000" Dst="2" />
 <file name="contients.php" server="ftp.immaterielles.org/www/" local="130463639513626000" remote="130519692000000000" Dst="2" />
 <file name="index.html" server="ftp.immaterielles.org/www/" local="130463639517636000" remote="130519692000000000" Dst="2" />
 <file name="recherche.php" server="ftp.immaterielles.org/www/" local="130463650844856000" remote="130519618800000000" Dst="2" />
-<file name="record.php" server="ftp.immaterielles.org/www/" local="130463639519076000" remote="130519692000000000" Dst="2" />
-<file name="records.php" server="ftp.immaterielles.org/www/" local="130463639520636000" remote="130519692000000000" Dst="2" />
-<file name="set.php" server="ftp.immaterielles.org/www/" local="130463639524076000" remote="130519692000000000" Dst="2" />
-<file name="sets.php" server="ftp.immaterielles.org/www/" local="130463639523626000" remote="130519692000000000" Dst="2" />
-<file name="store.php" server="ftp.immaterielles.org/www/" local="130463639525636000" remote="130519692000000000" Dst="2" />
-<file name="stores.php" server="ftp.immaterielles.org/www/" local="130463639528636000" remote="130519692000000000" Dst="2" />
+<file name="collections.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662822850000000" remote="131662822850000000" Dst="1" />
+<file name="contient.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665335210000000" remote="131665335210000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820040000000" remote="131662820040000000" Dst="1" />
+<file name="contients.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665335210000000" remote="131665335210000000" Dst="1" />
+<file name="collection.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662822580000000" remote="131662822580000000" Dst="1" />
+<file name="notices.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131665335210000000" remote="131665335210000000" Dst="1" />
+<file name="notice.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131779777120000000" remote="131779777120000000" Dst="1" />
 </dwsync>

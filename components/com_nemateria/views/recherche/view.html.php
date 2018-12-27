@@ -41,7 +41,7 @@ class NemateriaViewRecherche  extends JViewLegacy
 		for ($i = 0, $n = count($items); $i < $n; $i++)
 		{
 			$item		= &$items[$i];
-							$item->slug	= $item->alias ? ($item->id_record.':'.$item->alias) : $item->id_record;
+							$item->slug	= $item->alias ? ($item->id_notice.':'.$item->alias) : $item->id_notice;
 			
 			// echo "ITEM : ".$item;
 			$temp = new JRegistry;

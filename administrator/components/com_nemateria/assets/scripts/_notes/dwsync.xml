@@ -13,4 +13,17 @@
 <file name="jquery.uploadify.v2.1.4.min.js" server="ftp.immaterielles.org/www/" local="130462836918834132" remote="130416949200000000" Dst="2" />
 <file name="jquery.uploadify.v2.1.4.js" server="ftp.immaterielles.org/www/" local="130462836918844132" remote="130416949200000000" Dst="2" />
 <file name="swfobject.js" server="ftp.immaterielles.org/www/" local="130462836918854132" remote="130416949200000000" Dst="2" />
+<file name="import_img.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131649203620000000" remote="131649203620000000" Dst="1" />
+<file name="jquery.ui.widget.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551600000000" remote="131639551600000000" Dst="1" />
+<file name="jquery.uploadify.v2.1.4.min.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551620000000" remote="131639551620000000" Dst="1" />
+<file name="jquery.ui.datepicker.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551590000000" remote="131639551590000000" Dst="1" />
+<file name="jquery.uploadify.v2.1.4.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551610000000" remote="131639551610000000" Dst="1" />
+<file name="jquery-1.6.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551560000000" remote="131639551560000000" Dst="1" />
+<file name="import_set.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131655111440000000" remote="131655111440000000" Dst="1" />
+<file name="import_doc.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131649107580000000" remote="131649107580000000" Dst="1" />
+<file name="import.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131649105640000000" remote="131649105640000000" Dst="1" />
+<file name="infostore.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131655112320000000" remote="131655112320000000" Dst="1" />
+<file name="swfobject.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551630000000" remote="131639551630000000" Dst="1" />
+<file name="jquery.ui.datepicker-fr.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551580000000" remote="131639551580000000" Dst="1" />
+<file name="jquery.ui.core.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131639551570000000" remote="131639551570000000" Dst="1" />
 </dwsync>

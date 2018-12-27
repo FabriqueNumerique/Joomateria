@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="index.html" server="ftp.immaterielles.org/www/" local="130462836979824132" remote="130416949200000000" Dst="2" />
-<file name="record.xml" server="ftp.immaterielles.org/www/" local="131116665126943405" remote="131116665220000000" Dst="2" />
-<file name="set.xml" server="ftp.immaterielles.org/www/" local="130462836982834132" remote="130416949200000000" Dst="2" />
-<file name="store.xml" server="ftp.immaterielles.org/www/" local="130462836982844132" remote="130416949200000000" Dst="2" />
 <file name="record_old.xml" server="ftp.immaterielles.org/www/" local="130416949210000000" remote="130416949210000000" Dst="2" />
+<file name="entrepot.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131653202020000000" remote="131653202020000000" Dst="1" />
+<file name="notice.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131653468750000000" remote="131653468750000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131653191630000000" remote="131653191630000000" Dst="1" />
+<file name="collection.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131675728310000000" remote="131675728310000000" Dst="1" />
+<file name="notices.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131675736700000000" remote="131675736700000000" Dst="1" />
+<file name="record_old.xml" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131653191650000000" remote="131653191650000000" Dst="1" />
 </dwsync>

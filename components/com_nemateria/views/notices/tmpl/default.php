@@ -4,6 +4,10 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="componentheading<?php echo $this->escape($this->get('pageclass_sfx')); ?>"><h2><?php echo $this->params->get('page_title');  ?></h2></div>
 
+<?php
+	echo $this->type_collection;
+?>
+
 <div class="contentpane">
 	<h3>Some Items, if present</h3>
 	<ul>

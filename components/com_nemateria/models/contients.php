@@ -18,7 +18,7 @@ jimport('joomla.application.component.modellist');
  * @package     Joomla.Site
  * @subpackage  Exlineo
  */
-class ExlineoModelcontients extends JModelList
+class NemateriaModelcontients extends JModelList
 {
 	/**
 	 * Constructor.

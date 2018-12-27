@@ -6,4 +6,7 @@
 <file name="uninstall.mysql.sql" server="ftp.immaterielles.org/www/" local="130519661780000000" remote="130519661780000000" Dst="1" />
 <file name="install.mysql.sql" server="ftp.immaterielles.org/www/" local="130519661780000000" remote="130519661780000000" Dst="1" />
 <file name="index.html" server="ftp.immaterielles.org/www/" local="130519661780000000" remote="130519661780000000" Dst="1" />
+<file name="install.mysql.sql" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131641116260000000" remote="131641116260000000" Dst="1" />
+<file name="uninstall.mysql.sql" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131641116530000000" remote="131641116530000000" Dst="1" />
+<file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131641116250000000" remote="131641116250000000" Dst="1" />
 </dwsync>

@@ -6,4 +6,10 @@
 <file name="provider.cast.js" server="ftp.immaterielles.org/www/" local="130892841634175306" remote="130892846460000000" Dst="2" />
 <file name="provider.shaka.js" server="ftp.immaterielles.org/www/" local="130892841634545558" remote="130892846470000000" Dst="2" />
 <file name="provider.youtube.js" server="ftp.immaterielles.org/www/" local="130892841634695851" remote="130892846470000000" Dst="2" />
+<file name="1.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820160000000" remote="131662820160000000" Dst="1" />
+<file name="jwplayer.flash.swf" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820190000000" remote="131662820190000000" Dst="1" />
+<file name="jwplayer.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820220000000" remote="131662820220000000" Dst="1" />
+<file name="provider.cast.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820230000000" remote="131662820230000000" Dst="1" />
+<file name="provider.youtube.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820260000000" remote="131662820260000000" Dst="1" />
+<file name="provider.shaka.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662820250000000" remote="131662820250000000" Dst="1" />
 </dwsync>

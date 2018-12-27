@@ -11,13 +11,13 @@ require_once(JPATH_ADMINISTRATOR.'/components/com_nemateria/helpers/nemateria.ph
 
 defined('_JEXEC') or die('Restricted access');
 
-  function nemateriaBuildRoute( &$query )
+  function NemateriaBuildRoute( &$query )
   {
   	$segments = array();
   	  	
-  	$catviews = NemateriaHelper::getCategoryViews();
+  	// $catviews = NemateriaHelper::getCategoryViews();
   	
-  	$listviews = array_keys($catviews);
+  	// $listviews = array_keys($catviews);
 
 	// get a menu item based on Itemid or currently active
 	$app = JFactory::getApplication();
