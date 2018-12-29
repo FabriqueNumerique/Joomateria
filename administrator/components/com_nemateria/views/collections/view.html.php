@@ -67,14 +67,16 @@ class NemateriaViewCollections extends JViewLegacy
         $doc = JFactory::getDocument();
         //Ajout d'une feuille de style
         $doc->addStyleSheet('components/com_nemateria/assets/css/style.css');
-        JToolBarHelper::title( JText::_( 'COM_NEMATERIA_SUBMENU_COLLECTION_ALT' ), 'collection_manager.png' );
-        JToolBarHelper::deleteList(JText::_('COM_NEMATERIA_COLLECTION_DEL'),'collections.delete');
-        JToolBarHelper::editList('collection.edit', 'JTOOLBAR_EDIT');
+		
         JToolBarHelper::addNew('collection.add', 'JTOOLBAR_NEW');
+        JToolBarHelper::title( JText::_( 'COM_NEMATERIA_SUBMENU_COLLECTION_ALT' ), 'collection_manager.png' );
+        JToolBarHelper::editList('collection.edit', 'JTOOLBAR_EDIT');
+        JToolBarHelper::deleteList(JText::_('COM_NEMATERIA_COLLECTION_DEL'),'collections.delete');
+		
         //Nouvelle action : récupérer les sets associés à l'entrepôt
         $toolbar = JToolBar::getInstance('toolbar');
         //JToolBarHelper::custom( 'import', 'l21oai_set', 'l21oai_set', 'Importer les notices', true, true );
-        $toolbar->appendButton('Popup', 'nemateria_collection', 'COM_NEMATERIA_SUBMENU_NOTICE_IMPORT', 'index.php?option=com_nemateria&view=import&tmpl=component', 800, 400);
+        $toolbar->appendButton('Popup', 'nemateria_collection', 'COM_NEMATERIA_SUBMENU_NOTICE_IMPORT', 'index.php?option=com_nemateria&view=import&tmpl=component', 1024, 680);
     }
 
     /**

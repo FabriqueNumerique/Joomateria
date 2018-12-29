@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @version		$Id: l21oai.php 9 2012-02-14  labxxi $
- * @package		L21OAI v2.5
+ * @version		$Id: nemateria.php 01-01--2018 exlineo
+ * @package		NEMATERIA v0.8
  * @subpackage	Component
  * @copyright	Copyright (C) 2010-today Labxxi. All rights reserved.
- * @author		Labxxi
- * @link		http://labxxi.com
+ * @author		exlineo
+ * @link		http://www.exlineo.com
  * @license		http://www.gnu.org/licenses/gpl-2.0.html
  */
 

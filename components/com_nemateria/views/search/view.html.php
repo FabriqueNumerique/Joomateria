@@ -5,7 +5,7 @@
  * @subpackage          FrontOffice
  * @copyright           Copyright (C) 2010 - today LABXXI, Inc. All rights reserved.
  * @author		Mathieu Roulland
- * @link		http://labxxi.com
+ * @link		http://www.exlineo.com
  * @license		http://www.gnu.org/licenses/gpl-2.0.html
  */
 

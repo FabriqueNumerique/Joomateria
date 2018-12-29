@@ -80,7 +80,7 @@ class NemateriaModelEntrepot extends JModelAdmin
 //            $idescriptionXpath = 'child::c:description[@xml:lang="fre"]';
 //            $irelationXpath = 'child::c:relation';
         /*************************************************/
-        include_once (JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR.'components'.DIRECTORY_SEPARATOR.'com_nemateria'.DIRECTORY_SEPARATOR.'configuration'.DIRECTORY_SEPARATOR.$conf);
+        include_once (JPATH_ADMINISTRATOR.'/components/com_nemateria/configuration/'.$conf);
 
 
         $entrepot_url = $url."?verb=Identify";
@@ -146,7 +146,7 @@ class NemateriaModelEntrepot extends JModelAdmin
 
         $i=0;
 
-        //On va maintenant récupérer les autres informations contenus dans oai_dc:dc
+        // On va maintenant récupérer les autres informations contenues dans oai_dc:dc
 
         $int_description = "";
         $int_relation = "";
@@ -181,17 +181,12 @@ class NemateriaModelEntrepot extends JModelAdmin
     protected function loadFormData()
     {
         // Check the session for previously entered form data.
-        $data = JFactory::getApplication()->getUserState('com_nemateria.edit..data', array());
+        $data = JFactory::getApplication()->getUserState('com_nemateria.edit.data', array());
         if (empty($data))
         {
             $data = $this->getItem();
 
-
         }
         return $data;
     }
-
-
-
-
 }

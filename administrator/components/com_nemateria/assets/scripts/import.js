@@ -3,11 +3,12 @@ jQuery.noConflict();
 jQuery(document).ready(function () {
     jQuery("#input_start").datepicker();
     jQuery("#input_end").datepicker();
+	console.log(jQuery("#start_btn"));
     jQuery("#start_btn").click(function () { getXML()});
-        
-     });
+});
 
 function getXML() {
+	console.log("Start cliqué");
         //Vérification des checkbox
         if(jQuery("input:checked", window.parent.document).val() == undefined){
             var mess_no = "Vous devez cocher une collection à importer.";

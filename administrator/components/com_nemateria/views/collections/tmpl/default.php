@@ -2,7 +2,7 @@
 
 /**
  * @version		$Id: view.html.php 42 2011-03-31 09:12:23Z chdemko $
- * @package		L21oai25
+ * @package		Nemateria
  * @subpackage	Component
  * @copyright	Copyright (C) 2010-today Christophe Demko. All rights reserved.
  * @author		Christophe Demko
@@ -19,7 +19,7 @@ $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_nemateria&view=collections'); ?>" method="post" name="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_nemateria&view=collections'); ?>" method="post" name="adminForm" id="adminForm">
     <?php //echo $this->loadTemplate('filter');?>
     <table class="adminlist">
         <thead><?php echo $this->loadTemplate('head');?></thead>

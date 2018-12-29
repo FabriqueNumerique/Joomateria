@@ -4,11 +4,11 @@ jQuery(document).ready(function () {
     jQuery("#input_start").datepicker();
     jQuery("#input_end").datepicker();
     jQuery("#start_btn").click(function () { getXML()});
-        
-     });
+ });
 
 function getXML() {
         //Vérification des checkbox
+	console.log(jQuery("input:checked", window.parent.document).val());
         if(jQuery("input:checked", window.parent.document).val() == undefined){
             var mess_no = "Vous devez cocher une collection à importer.";
             jQuery('.import_progress_container:last').html(mess_no);
@@ -22,11 +22,11 @@ function getXML() {
         var id = jQuery("input:checked", window.parent.document).val();   
         jQuery.ajax({
             type : 'POST', // envoi des données en GET ou POST
-//            url : 'index.php?option=com_l21oai25&controller=import&task=start&tmpl=component' , // url du fichier de traitement
-            url : 'index.php?option=com_nemateria&task=import_collection.start&tmpl=component' , // url du fichier de traitement
+//            url : 'index.php?option=com_nemateria&controller=import&task=start&tmpl=component' , // url du fichier de traitement
+            url : 'index.php?option=com_nemateria&task=import.start&tmpl=component' , // url du fichier de traitement
             data : 'q='+id , // données à envoyer en  GET ou POST
             beforeSend : function() { // traitements JS à faire AVANT l'envoi
-                jQuery('#load').html('<img src="components/com_l21oai25/assets/images/ajax-loader.gif" alt="loader" id="ajax-loader" />'); // ajout d'un loader pour signifier l'action
+                jQuery('#load').html('<img src="components/com_nemateria/assets/images/ajax-loader.gif" alt="loader" id="ajax-loader" />'); // ajout d'un loader pour signifier l'action
             },
             success : function(data){ // traitements JS à faire APRES le retour d'ajax-search.php
                 jQuery('.import_progress_container:last').html(data); // affichage des résultats dans le bloc
