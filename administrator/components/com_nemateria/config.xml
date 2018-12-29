@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+
+	<fieldset
+		name="serveurs"
+		label="Serveurs"
+		description="Paramètres de gestion des comportements serveurs"
+		>
+
+		<field
+			name="active_ws"
+			type="radio"
+			label="Autoriser les Web Services"
+			description="Activer les web services comme sources de données"
+			default="1"
+			class="btn-group btn-group-yesno"
+			>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+        <field
+			name="active_oai"
+			type="radio"
+			label="Autoriser l'OAI"
+			description="Activer le moissonnage OAI"
+			default="1"
+			class="btn-group btn-group-yesno"
+			>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+
+	<fieldset
+		name="contributions"
+		label="Contributions"
+		description="Paramètres de gestion des contributions"
+		>
+
+		<field 
+		    name="email"
+			type="text"
+			default=""
+			label="EMAIL"
+			required="false"
+		    description="">
+		</field>
+	</fieldset>
+</config>
