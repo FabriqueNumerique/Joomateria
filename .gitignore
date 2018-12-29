@@ -6,4 +6,6 @@
 !language/fr-FR/*
 !administrator/components/com_nemateria/*
 !components/com_nemateria/*
-!media/*
+!media/com_nemateria/*
+
+_notes
