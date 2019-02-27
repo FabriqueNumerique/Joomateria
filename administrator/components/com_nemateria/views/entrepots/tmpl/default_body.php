@@ -28,7 +28,6 @@ $n			= count($this->items);
 		<td>
                     <a href="<?php echo JRoute::_('index.php?option=com_nemateria&task=entrepot.edit&id_entrepot='.$item->id_entrepot);?>">
 			<?php echo $this->escape($item->title); ?></a>
-			<p class="smallsub">
 		</td>
                 <td class="center">
 			<a href="index.php?option=com_nemateria&view=collections&filter_entrepot=<?php echo $item->id_entrepot;?>">

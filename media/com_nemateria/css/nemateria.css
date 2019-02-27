@@ -29,6 +29,7 @@ h2,
     overflow: auto;
     margin: 10px;
     align-items: stretch;
+	overflow:hidden;
 }
 
 #recherche .resultat div p {
@@ -49,7 +50,13 @@ h2,
     display: inline-block;
     overflow: hidden;
 }
-
+#recherche .resultat div:nth-child(1) a, #recherche .resultat div:nth-child(1) .vignette {
+	height:100%;
+	width:100%;
+	background-size: cover;
+	background-position: 50%;
+	margin:0;
+}
 #recherche .resultat .picto-media {
     max-width: 50px !important;
     height: 50px;
@@ -99,9 +106,10 @@ h2,
 .bouton {
     background: rgba(255, 255, 255, 0.5);
     float: right;
-    padding: 4px 8px;
+    padding: 12px 16px;
     margin: 4px;
     border: none;
+	transition:all .3s ease;
 }
 
 #recherche .list-footer .limit,
@@ -757,6 +765,22 @@ li.active a:hover {
 .masque{
 	display:none;
 }
+
+/* CSS du module de recherche */
+.mod_vignette{
+	float:left;
+	
+}
+
+/* CSS DU MODULE DE RECHERCHE */
+#modnemateriasearch{
+	display:flex;
+	flex-flow:row wrap;
+}
+#modnemateriasearch div{
+	margin:20px;
+}
+
 
 @keyframes spin {
     0% {

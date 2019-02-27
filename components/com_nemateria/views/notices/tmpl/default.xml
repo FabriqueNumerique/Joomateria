@@ -22,7 +22,7 @@
 				key_field="id_collection"
 				value_field="title"
 				required="true"
-				multiple="true"
+				multiple="false"
 			/>
 			
 			<field 
@@ -36,7 +36,18 @@
 					  	<option value="images">Images</option>
 						<option value="multimedia">Multimédia</option>
 			</field>
-
+			
+			<field 
+				   name="aseries"
+				   type="radio"
+				   default="0"
+				   label="SERIES"
+				   required="true"
+				   description="Merci d'indiquer si ce tri comporte des séries">
+						<option value="0">JNO</option>
+  						<option value="1">JYES</option>
+			</field>
+			
 			<field 
 				   name="gabarit"
 				   type="list"
@@ -44,7 +55,7 @@
 				   label="GABARIT"
 				   required="false"
 				   description="">
-						<option value="">Choisissez un gabarit</option>
+						<option value="">Choisissez un gabarit (non encore implémenté)</option>
 					  	<option value="">Liste</option>
 						<option value="vignettes">Vignettes</option>
 			</field>

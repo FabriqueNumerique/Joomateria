@@ -39,12 +39,6 @@ class NemateriaModelCollections extends JModelList
     public function __construct($config = array())
     {
         parent::__construct($config);
-
-        // Get all lan,guage tags
-//		$tags = JArrayHelper::getColumn(JLanguageHelper::getLanguages(), 'lang_code');
-
-        // Create tables for variants
-//		L21oai25Helper::createTitleTables($tags);
     }
 
     /**
@@ -154,12 +148,7 @@ class NemateriaModelCollections extends JModelList
             $query = $db->getQuery(true);
 
             // Select some fields
-//			$query->select('alternate');
-//			$query->from($db->nameQuote('#__l21oai25_sets_variants_' . $item->language));
-//			$query->where('eid=' . $item->id);
-//			$query->order('ordering');
             $db->setQuery($query);
-//			$item->variants = $db->loadResultArray();
             if ($db->getErrorNum())
             {
                 $this->setError($db->getErrorMsg());

@@ -140,8 +140,9 @@ class NemateriaModelNotices extends JModelList
 		$menu = $app->getMenu()->getActive();
 		// EXLINEO - Gestion des champs 'Collection' (lid_collection) et du type de collection pour l'affichage (tpl)
 		$this->menuparams = $menu;
-		$ids_collection = $menu->query['id_collection'];
-		$type_collection = $menu->query['type'];
+		$ids_collection = $menu->query['id_collection']; // Id de la ou des collections à afficher
+		$aseries = $menu->query['aseries']; // Paramètre du menu, 0 / 1 des séries sont-elles présentent ?
+		$type_collection = $menu->query['type']; // Le type de collection à afficher pour choisir la vue : multimédia ou images
 		
 		// Traitement sur les collections saisies pour faire les requêtes
 		if(is_array($ids_collection)){
@@ -167,23 +168,24 @@ class NemateriaModelNotices extends JModelList
         $colTitre = $col->title;
         $colNom = $col->name;
         
-        // ETAPE 2 - ALLER CHERCHER LES SERIES DANS LES NOTICES DES COLLECTIONS
-        $series = $this->getDbo();
-		$series->setQuery("SELECT DISTINCT SUBSTRING(champs, LOCATE('isPartOf=', champs)+9, LOCATE('accessRights', champs) - LOCATE('isPartOf=', champs) - 9) FROM #__nemateria_notices WHERE champs LIKE '%relation=".$colTitre."%'");
-        
-		// LISTE DES THEMES ABORDES
-		self::$listeSeries = $series->loadColumn();
-        
-        // Série sélectionnée s'il y a lieu
-        if(JRequest::getVar('serie')){
-            self::$colSeries = JRequest::getVar('serie');
-        }else{
-            self::$colSeries = self::$listeSeries[0];
+		if($aseries != 0){
+			// ETAPE 2 - ALLER CHERCHER LES SERIES DANS LES NOTICES DES COLLECTIONS
+			$series = $this->getDbo();
+			$series->setQuery("SELECT DISTINCT SUBSTRING(champs, LOCATE('isPartOf=', champs)+9, LOCATE('accessRights', champs) - LOCATE('isPartOf=', champs) - 9) FROM #__nemateria_notices WHERE champs LIKE '%relation=".$colTitre."%'");
+
+			// LISTE DES THEMES ABORDES
+			self::$listeSeries = $series->loadColumn();
+
+			// Série sélectionnée s'il y a lieu
+			if(JRequest::getVar('serie')){
+				self::$colSeries = JRequest::getVar('serie');
+			}else{
+				self::$colSeries = self::$listeSeries[0];
+			}
+
+			// Ajout de la requête sur la série
+			$collec .= " AND champs LIKE '%isPartOf=".trim(self::$colSeries)."%'";
         }
-        
-        // Ajout de la requête sur la série
-        $collec .= "AND champs LIKE '%isPartOf=".self::$colSeries."%'";
-            
         // ETAPE 3 - SELECTIONNER LES NOTICES
         $db = $this->getDbo();
         $user = JFactory::getUser();

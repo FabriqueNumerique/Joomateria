@@ -20,8 +20,7 @@ JHtml::_('behavior.formvalidation');
 
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_nemateria&layout=edit&id_entrepot='.(int) $this->item->id_entrepot); ?>" method="post" name="adminForm" id="entry-form" class="form-validate">
-	<div class="width-60 fltlft">
+<form action="<?php echo JRoute::_('index.php?option=com_nemateria&layout=edit&id_entrepot='.(int) $this->item->id_entrepot); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
 		<fieldset class="adminform">
 			<legend><?php echo  JText::_('COM_NEMATERIA_DETAILS', $this->item->id_entrepot); ?></legend>
 			<ul class="adminformlist">
@@ -54,11 +53,10 @@ JHtml::_('behavior.formvalidation');
 				<?php echo $this->form->getInput('id_entrepot'); ?></li>
 			</ul>
 		</fieldset>
-	</div>
 <div class="width-40 fltrt">
 		<?php
                 echo JHtml::_('sliders.start', 'entry-slider'); 		
-                echo JHtml::_('sliders.panel',JText::_('COM_NEMATERIA_SUBMENU_ENTREPOT'));?>
+                echo JHtml::_('sliders.panel', JText::_('COM_NEMATERIA_SUBMENU_ENTREPOT'), '$name'.'-entrepot');?>
 		
 		<fieldset class="panelform">
                     <p><b><?php echo JText::sprintf('COM_NEMATERIA_EXPLANATION'); ?></b></p>

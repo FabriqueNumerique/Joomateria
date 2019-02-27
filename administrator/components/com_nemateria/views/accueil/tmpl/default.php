@@ -19,64 +19,15 @@ JHtml::_('behavior.tooltip');
 
 
 ?>
-<table class="adminlist" style="width:68%; float:left">
-	<tr>
-		<td colspan="2">
-			<div id="cpanel">
-				<div style="float:left;">
-					<div class="icon">
-						<a href="index.php?option=com_nemateria&view=entrepots">
-                                                    <img src="components/com_nemateria/assets/images/folder_red.png" alt="<?php echo JText::_('COM_NEMATERIA_SUBMENU_ENTREPOT'); ?>" />
-                                                    <span><?php echo JText::_('COM_NEMATERIA_SUBMENU_ENTREPOT'); ?></span>
-                                                </a>
-					</div>
-				</div>
-				<div style="float:left;">
-					<div class="icon">
-						<a href="index.php?option=com_nemateria&view=collections">
-                                                    <img src="components/com_nemateria/assets/images/folder_green.png" alt="<?php echo JText::_('COM_NEMATERIA_SUBMENU_COLLECTION_ALT'); ?>" />
-                                                    <span><?php echo JText::_('COM_NEMATERIA_SUBMENU_COLLECTION'); ?></span>
-                                                </a>
-					</div>
-				</div>
-				<div style="float:left;">
-					<div class="icon">
-						<a href="index.php?option=com_nemateria&view=notices">
-                                                    <img src="components/com_nemateria/assets/images/folder_grey.png" alt="<?php echo JText::_('COM_NEMATERIA_SUBMENU_NOTICE_ALT'); ?>" />
-                                                    <span><?php echo JText::_('COM_NEMATERIA_SUBMENU_NOTICE'); ?></span>
-                                                </a>
-					</div>
-				</div>
-			</div>
-		</td>
-	</tr>
-        <tr>
-            <td>
-                <div id="lab_oai">
-                    <img src="components/com_nemateria/assets/images/logo_nemateria.png" alt="<?php echo JText::_('COM_NEMATERIA_EXLINEO'); ?>" />
-                </div>
-            </td>
-            <td>
-                <div id="lab_version">
-                    <?php echo JText::_('COM_NEMATERIA_VERSION1'); ?>
-                    <?php echo JText::_('COM_NEMATERIA_VERSION2'); ?>
-                    <?php echo JText::_('COM_NEMATERIA_VERSION3'); ?>
-                    <?php echo JText::_('COM_NEMATERIA_VERSION4'); ?>
-                    <?php echo JText::_('COM_NEMATERIA_VERSION5'); ?>
-                    <?php echo JText::_('COM_NEMATERIA_VERSION6'); ?>
-                    <?php echo JText::_('COM_NEMATERIA_VERSION7'); ?>
-                </div>
-            </td>
-        </tr>
-</table>
-
-<table class="adminlist" style="width:30%; float:right">
-   <tr>
-   <td>
-        <div class="">
-            <?php
+<section id="nemateriaAdmin" class="accueil">
+	<article>
+		<img src="components/com_nemateria/assets/images/logo_nemateria.png" alt="<?php echo JText::_('COM_NEMATERIA_EXLINEO'); ?>" />
+		<?php echo JText::_('COM_NEMATERIA_VERSION'); ?>
+	</article>
+	<article>
+		<?php
             echo JHtml::_('sliders.start', 'welcome-slider'); 		
-            echo JHtml::_('sliders.panel',JText::_('COM_NEMATERIA_SUBMENU_ENTREPOT'));?>
+            echo JHtml::_('sliders.panel', JText::_('COM_NEMATERIA_SUBMENU_ENTREPOT'), '$name'.'-entrepot');?>
 
             <fieldset class="panelform">
                 <table class="adminlist">
@@ -88,7 +39,7 @@ JHtml::_('behavior.tooltip');
 				<tr>
 					<td colspan="2">
                     <p><?php echo JText::_('COM_NEMATERIA_INTRO1'); ?></p>
-		    <p><?php echo JText::_('COM_NEMATERIA_INTRO2'); ?></p>
+		    		<p><?php echo JText::_('COM_NEMATERIA_INTRO2'); ?></p>
                     <p><?php echo JText::_('COM_NEMATERIA_INTRO3'); ?></p>
                     <p><?php echo JText::_('COM_NEMATERIA_INTRO4'); ?></p>
                     <p><?php echo JText::_('COM_NEMATERIA_INTRO5'); ?></p>
@@ -97,7 +48,7 @@ JHtml::_('behavior.tooltip');
 			</table>
                 
             </fieldset>
-            <?php echo JHtml::_('sliders.panel',JText::_('COM_NEMATERIA_STAT'), '$name'.'-metadata');?>
+            <?php echo JHtml::_('sliders.panel', JText::_('COM_NEMATERIA_STAT'), '$name'.'-metadata');?>
             <fieldset class="panelform">
                 <table class="adminlist">
 				<tr>
@@ -189,7 +140,6 @@ JHtml::_('behavior.tooltip');
             
             <input type="hidden" name="task" value="" />
             <?php echo JHtml::_('form.token'); ?>
-	</div>              
-    </td>
-   </tr>
-</table>
+		</div>  
+	</article>
+</section>

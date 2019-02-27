@@ -10,10 +10,8 @@
 // 
 
 defined('_JEXEC') or die;
-require_once(JPATH_ROOT.DS.'components/com_nemateria/assets/lib/actions.php');
 
 jimport('joomla.application.component.modellist');
-
 /**
  * Methods supporting a list of contact records.
  *
@@ -22,7 +20,7 @@ jimport('joomla.application.component.modellist');
  */
 class NemateriaModelRecherche extends JModelList
 {
-	/**
+    /**
 	 * Constructor.
 	 *
 	 * @param   array  $config  An optional associative array of configuration settings.
@@ -30,10 +28,11 @@ class NemateriaModelRecherche extends JModelList
 	 * @see     JController
 	 * @since   1.6
 	 */
-	 
+	public static $listeSeries; // Liste complète des séries
+	public static $colSeries; // Serie actuelle
+    
 	public function __construct($config = array())
 	{
-		
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
@@ -63,14 +62,15 @@ class NemateriaModelRecherche extends JModelList
 	          	          'metadata', 'a.metadata',
 	          	          'unique_identifier', 'a.unique_identifier',
 	          	          'local_link', 'a.local_link',
-	          	          'id_notice', 'a.id_notice',
+	          	          'id_collection', 'c.id_collection',
 	          			);
 
 			$app = JFactory::getApplication();
 
 		}
-
 		parent::__construct($config);
+		
+		self::$listeSeries = array();
 	}
 
 	/**
@@ -132,49 +132,73 @@ class NemateriaModelRecherche extends JModelList
 	 * @return  JDatabaseQuery
 	 * @since   1.6
 	 */
+
 	protected function getListQuery()
 	{
-
-		$url_id = JRequest::getVar('id');
-		$valeur = JRequest::getVar('valeur'); // Valeur saisie en créant le menu > Une ou plusieurs collections
-		$m = JRequest::getVar('m'); // Savoir si le template est un template multimédia
-		$collec = "";
+		// Récupérer le formulaire de recherche de la vue du composant
+		$jinput = JFactory::getApplication()->input;
+		$ids_collection = $jinput->get('collections', '', 'ARRAY');
+		$format = $jinput->get('format', '', 'string');
+		$mots = $jinput->get('mots', '', 'string');
 		
 		// Traitement sur les collections saisies pour faire les requêtes
-		if(strpos($valeur , ",") !== false){
-			$valeur = explode(",", $valeur);
-			
+		if(is_array($ids_collection)){
 			$collec = '(';
 			
-			foreach($valeur as $i => $j){
-				if($i < count($valeur)-1){
-					$collec .= 'c.id_set = '.$j.' OR ';
+			foreach($ids_collection as $i => $j){
+				if($i < count($ids_collection)-1){
+					$collec .= 'c.id_collection = '.$j.' OR ';
 				}else{
-					$collec .= 'c.id_set = '.$j.')';
+					$collec .= 'c.id_collection = '.$j.')';
 				}
 			}
-			
+		}else if(is_int($ids_collection)){
+			$collec = 'c.id_collection = '.$ids_collection;
 		}else{
-			$collec = 'c.id_set = '.$valeur;
+			$collec = 0;
 		}
 		
-		/*$menu =   &JSite::getMenu();
-		$item = $menu->getItem($menuId);
-		$listevars = $vars->get('theParamIwant');
-		$vars = new JParameter($item->params);*/
-		
-		
-		// Create a new query object.
-		$db = $this->getDbo();
+		$pos = strrpos($mots, " ");
+		// Traitement sur les mots saisis pour les extraires
+		if($pos === false){
+			$rechmots = 'LIKE %'.$mots.'%';
+			
+		}
+        // ETAPE 1 - Identifier les titres des collections
+        $colDB = $this->getDbo();
+		$colDB->setQuery("SELECT description, title, name FROM #__nemateria_collections as c WHERE $collec ");
+		$col = $colDB->loadObject();
+        
+        $colTitre = $col->title;
+        $colNom = $col->name;
+        
+        // ETAPE 2 - ALLER CHERCHER LES SERIES DANS LES NOTICES DES COLLECTIONS
+        /*$series = $this->getDbo();
+		$series->setQuery("SELECT DISTINCT SUBSTRING(champs, LOCATE('isPartOf=', champs)+9, LOCATE('accessRights', champs) - LOCATE('isPartOf=', champs) - 9) FROM #__nemateria_notices WHERE champs LIKE '%relation=".$colTitre."%'");
+        
+		// LISTE DES THEMES ABORDES
+		self::$listeSeries = $series->loadColumn();
+        
+        // Série sélectionnée s'il y a lieu
+        if(JRequest::getVar('serie')){
+            self::$colSeries = JRequest::getVar('serie');
+        }else{
+            self::$colSeries = self::$listeSeries[0];
+        }
+        
+        // Ajout de la requête sur la série
+        $collec .= "AND champs LIKE '%isPartOf=".self::$colSeries."%'";*/
+            
+        // ETAPE 3 - SELECTIONNER LES NOTICES
+        $db = $this->getDbo();
+        $user = JFactory::getUser();
 		$query = $db->getQuery(true);
-		$user = JFactory::getUser();
-		$app = JFactory::getApplication();
-
-		$select_fields = $this->getState('list.select', 'a.*'); 
+		$select_fields = $this->getState('list.select', 'a.*');
 		
 		$query->select('*');
-		$query->from('#__l21_oai25_records AS a');
-		$query->join('INNER', '#__l21_oai25_contient AS c ON a.id_record = c.id_record');
+		$query->from('#__nemateria_notices AS a');
+		// $query->join('INNER', '#__nemateria_contient AS c ON a.id_record = c.id_record');
+		$query->join('INNER', '#__nemateria_contient AS c ON a.id_notice = c.id_notice');
 		// $query->where('c.id_set = '.$valeur.' AND LENGTH(a.title) > 0');
 		$query->where($collec.' AND LENGTH(a.title) > 0');
 			
@@ -192,12 +216,9 @@ class NemateriaModelRecherche extends JModelList
 			$tmp .= '(a.published = 0 OR a.published = 1)';
 		}
 		
-		if($url_id != ''){
-			$tmp .= ' AND id_record='.$url_id;
+		if($ids_collection != ''){
+			// $tmp .= ' AND id_notice='.$ids_collection;
 		}
-			
-		// Recherche WHERE
-		$query->where($tmp);
 		
 		// Filter by search in name.
 		$search = $this->getState('filter.search');
@@ -208,9 +229,20 @@ class NemateriaModelRecherche extends JModelList
 		
 		$query->order($db->escape($orderCol . ' ' . $orderDirn));
 		
-		// echo $query;
+		$this->setState('list.limit', 0); // 0 = unlimited
 		
 		return $query;
 	}
+    
+    // Afficher les séries dans la vue
+    public function getSeries()
+	{
+        return self::$listeSeries;
+	}
+	// Retourner la valeur de la série actuelle
+    public function getSeriesActu()
+	{
+        return self::$colSeries;
+    }
 }
  

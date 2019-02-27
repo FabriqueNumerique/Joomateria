@@ -1,178 +1,153 @@
 <?php
 /**
- * @version		$Id:router.php 1 2014-06-03Z nemateria $
- * @package		nemateria
- * @subpackage 	Router
- * @copyright	Copyright (C) 2014, nemateria. All rights reserved.
- * @license #http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- */  
+ * @package     Joomla.Site
+ * @subpackage  com_contact
+ *
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
-require_once(JPATH_ADMINISTRATOR.'/components/com_nemateria/helpers/nemateria.php');
+defined('_JEXEC') or die;
 
-defined('_JEXEC') or die('Restricted access');
+use \Joomla\CMS\Component\Router\RouterView;
+/**
+ * Routing class from com_contact
+ *
+ * @since  3.3
+ */
+class NemateriaRouter extends JComponentRouterView
+{
+	protected $noIDs = false;
 
-  function NemateriaBuildRoute( &$query )
-  {
-  	$segments = array();
-  	  	
-  	// $catviews = NemateriaHelper::getCategoryViews();
-  	
-  	// $listviews = array_keys($catviews);
+	/**
+	 * Search Component router constructor
+	 *
+	 * @param   JApplicationCms  $app   The application object
+	 * @param   JMenu            $menu  The menu object to work with
+	 */
+	public function __construct($app = null, $menu = null)
+	{
+		$params = JComponentHelper::getParams('com_nemateria');
+		$this->noIDs = (bool) $params->get('sef_ids');
+		
+		$collectionsRoute = new JComponentRouterViewconfiguration('collections');
+		$collectionsRoute->setKey('id_collection');
+		$this->registerView($collectionsRoute);
+		
+		$collectionRoute = new JComponentRouterViewconfiguration('collection');
+		$collectionRoute->setKey('id_collection')->setParent($collectionsRoute, 'id_collection')->setNestable();
+		$this->registerView($collectionRoute);
+		
+		$noticesRoute = new JComponentRouterViewconfiguration('notices');
+		$noticesRoute->setKey('id_notice')->setParent($collectionRoute, 'id_collection');
+		$this->registerView($noticesRoute);
+		
+		$noticeRoute = new JComponentRouterViewconfiguration('notice');
+		$noticeRoute->setKey('id_notice')->setNestable();
+		$this->registerView($noticeRoute);
 
-	// get a menu item based on Itemid or currently active
+		parent::__construct($app, $menu);
+		
+		/*$this->attachRule(new MenuRules($this));
+		$this->attachRule(new StandardRules($this));
+		$this->attachRule(new NomenuRules($this));
+
+		$this->attachRule(new JComponentRouterRulesMenu($this));
+		
+		
+		if ($params->get('sef_advanced', 0))
+		{
+			$this->attachRule(new JComponentRouterRulesStandard($this));
+			$this->attachRule(new JComponentRouterRulesNomenu($this));
+		}
+		else
+		{
+			JLoader::register('NemateriaRouterRulesLegacy', __DIR__ . '/helpers/legacyrouter.php');
+			$this->attachRule(new NemateriaRouterRulesLegacy($this));
+		}*/
+	}
+	
+	public function build(&$query)
+    {
+        $segments = array();
+        if (isset($query['view']))
+        {
+            $segments[] = $query['view'];
+            unset($query['view']);
+        }
+		if (isset($query['id_notice']))
+        {
+            $segments[] = $query['id_notice'];
+            unset($query['id_notice']);
+        };
+        if (isset($query['id']))
+        {
+            $segments[] = $query['id'];
+            unset($query['id']);
+        };
+        return $segments;
+    }
+	
+	public function parse(&$segments)
+	{
+		$vars = array();
+		switch($segments[0])
+		{
+			case 'collection':
+				$vars['view'] = 'collection';
+				break;
+			case 'collections':
+				$vars['view'] = 'collections';
+				$id = explode(':', $segments[1]);
+				$vars['id'] = (int) $id[0];
+				break;
+			case 'notice':
+				$vars['view'] = 'notice';
+				$id = explode(':', $segments[1]);
+				$vars['id_notice'] = (int) $id[0];
+				break;
+		}
+		return $vars;
+	}
+	
+}
+
+/**
+ * Contact router functions
+ *
+ * These functions are proxys for the new router interface
+ * for old SEF extensions.
+ *
+ * @param   array  &$query  An array of URL arguments
+ *
+ * @return  array  The URL arguments to use to assemble the subsequent URL.
+ *
+ * @deprecated  4.0  Use Class based routers instead
+ */
+function NemateriaBuildRoute(&$query)
+{
 	$app = JFactory::getApplication();
-	$params = JComponentHelper::getParams('com_nemateria');
-	$advanced = $params->get('sef_advanced_link', 0);
-	$menu = $app->getMenu();
+	$router = new NemateriaRouter($app, $app->getMenu());
 
-	if (empty($query['Itemid']))
-	{
-		$menuItem = $menu->getActive();
-	}
-	else
-	{
-		$menuItem = $menu->getItem($query['Itemid']);
-	}
-	$mView = (empty($menuItem->query['view'])) ? null : $menuItem->query['view'];
-	$mId = (empty($menuItem->query['id'])) ? null : $menuItem->query['id'];
+	return $router->build($query);
+}
 
-	if (isset($query['view']))
-	{
-		$view = $query['view'];
-		if (empty($query['Itemid']) || empty($menuItem) || $menuItem->component != 'com_nemateria')
-		{
-			$segments[] = $query['view'];
-			unset($query['view']);
-		}
-		
-	}
+/**
+ * Contact router functions
+ *
+ * These functions are proxys for the new router interface
+ * for old SEF extensions.
+ *
+ * @param   array  $segments  The segments of the URL to parse.
+ *
+ * @return  array  The URL attributes to be used by the application.
+ *
+ * @deprecated  4.0  Use Class based routers instead
+ */
+function NemateriaParseRoute($segments)
+{
+	$app = JFactory::getApplication();
+	$router = new NemateriaRouter($app, $app->getMenu());
 
-	// are we dealing with a contact that is attached to a menu item?
-	if (isset($view) && ($mView == $view) and (!in_array($view, $listviews)) and (isset($query['id'])) and ($mId == (int) $query['id']))
-	{
-		unset($query['view']);
-		unset($query['category']);
-		unset($query['id']);
-		return $segments;
-	}
-
-	// category (list) views
-	if (isset($view) && in_array($view, $listviews))
-	{
-		$segments[] = $query['view'];
-		unset($query['view']);		
-		
-		if ((isset($query['id']) && ($mId != (int) $query['id'])) || $mView != $view)
-		{
-			if (isset($query['category']))
-			{
-				$catid = $query['category'];				 
-			}
-			elseif (isset($query['id']))
-			{
-				$catid = $query['id'];
-			}
-			$menuCatid = $mId;
-			
-			$options = array('extension'=>$catviews[$view]);
-			
-			$categories = JCategories::getInstance('Nemateria', $options);
-			$category = $categories->get((int) $catid);			
-			if ($category)
-			{
-				//TODO Throw error that the category either not exists or is unpublished
-				$path = array_reverse($category->getPath());
-
-				$array = array();
-				foreach ($path as $id)
-				{
-					if ((int) $id == (int) $menuCatid)
-					{
-						break;
-					}					
-					$array[] = $id;
-				}
-				$segments = array_merge($segments, array_reverse($array));
-			}
-		}
-		unset($query['id']);
-		unset($query['category']);
-	} else {
-		if(isset($query['view'])) {
-			$segments[] = $query['view'];
-			unset($query['view']);
-		}
-		if(isset($query['id'])) {
-			$segments[] = $query['id'];
-			unset($query['id']);
-		}
-	}
-    
-	return $segments;  	
-  } // End NemateriaBuildRoute function
-  
-  function nemateriaParseRoute( $segments )
-  {
-  	$vars = array();
-  
-  	$catviews = NemateriaHelper::getCategoryViews();
-  	$extensionviews = array_flip($catviews);
-  	$listviews = array_keys($catviews);
-
-  	//Get the active menu item.
-  	$app = JFactory::getApplication();
-  	
-  	$params = JComponentHelper::getParams('com_nemateria');
-  	$advanced = $params->get('sef_advanced_link', 0);
-  	  	
-  	$menu = $app->getMenu();
-  	
-  	$item = $menu->getActive();
-  	
-  	// Count route segments
-  	$count = count($segments);
-  	
-  	
-  	// Standard routing
-  	if (!isset($item))
-  	{
-  		$vars['view'] = $segments[0];
-  		$isList = in_array($vars['view'], $listviews);
-  		if($isList && $count > 1) {
-  			$vars['category'] = $segments[$count - 1];
-  		} elseif(!$isList && $count > 1) {
-  			$vars['id'] = $segments[$count - 1];
-  		}
-  	
-  		return $vars;
-  	}
-   	 	
-  	if(count($segments > 0)) {
-  		$vars['view'] = $segments[0];
-  		switch($vars['view']) {
-  			case 'contient':
-      		$id   = explode(':', $segments[1]);      		
-      		$vars['id']= (int) $id[0];        
-			break;
-case 'notice':
-      		$id   = explode(':', $segments[1]);      		
-      		$vars['id']= (int) $id[0];        
-			break;
-case 'collection':
-      		$id   = explode(':', $segments[1]);      		
-      		$vars['id']= (int) $id[0];        
-			break;
-case 'entrepot':
-      		$id   = explode(':', $segments[1]);      		
-      		$vars['id']= (int) $id[0];        
-			break;
-
-  		}
-              
-    } else {
-      $vars['view'] = $segments[0];
-    } // End count(segments) statement
-
-    return $vars;
-  } // End nemateriaParseRoute
-?>
+	return $router->parse($segments);
+}

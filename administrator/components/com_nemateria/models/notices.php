@@ -43,14 +43,6 @@ class NemateriaModelNotices extends JModelList
         parent::__construct($config);
 
         $filter_set = JRequest::getInt('filter_set', 0);
-
-        //print_r($filter_set);
-
-        // Get all lan,guage tags
-//		$tags = JArrayHelper::getColumn(JLanguageHelper::getLanguages(), 'lang_code');
-
-        // Create tables for variants
-//		L21oai25Helper::createTitleTables($tags);
     }
 
     /**
@@ -112,7 +104,7 @@ class NemateriaModelNotices extends JModelList
             $search = $db->Quote('%' . $db->escape($search, true) . '%');
             $query->where('(title LIKE ' . $search . ')');
         }
-        if($filter_collection= JRequest::getCmd( 'filter_set' ))
+        if($filter_collection= JRequest::getCmd( 'filter_collection' ))
         {
             $query->where('id_notice IN (select id_notice from #__nemateria_contient where id_collection ='.$filter_collection.')' );
         }

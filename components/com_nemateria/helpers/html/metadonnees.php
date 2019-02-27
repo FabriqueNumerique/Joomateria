@@ -65,29 +65,24 @@
             <li><span class='bleu'>Référence</span> : <?php  echo $liens[0]; ?></li>
 			
 			<?php if(strlen($metadiverses['medium']) > 0) : ?>
-            <li><span class='bleu'>Nature du support original</span> : <?php echo $metadiverses['medium']; ?></li>
-			<?php endif; ?>
+            	<li><span class='bleu'>Nature du support original</span> : <?php echo $metadiverses['medium']; ?></li>
 			<?php endif; ?>
 			
 			<?php if(strlen($metadiverses['hasFormat']) > 0) : ?>
-            <li><span class='bleu'>Format du master numérique</span> : <?php echo $metadiverses['hasFormat']; ?></li>
-			<?php endif; ?>
+            	<li><span class='bleu'>Format du master numérique</span> : <?php echo $metadiverses['hasFormat']; ?></li>
 			<?php endif; ?>
 			
 			<?php if(strlen($metadiverses['dateCopyrighted']) > 0) : ?>
-            <li><span class='bleu'>Propriétaire des supports originaux</span> : <?php echo $metadiverses['dateCopyrighted']; ?></li>
-			<?php endif; ?>
+            	<li><span class='bleu'>Propriétaire des supports originaux</span> : <?php echo $metadiverses['dateCopyrighted']; ?></li>
 			<?php endif; ?>
 			
 			<?php if(strlen($metadiverses['rightsHolder']) > 0) : ?>
-            <li><span class='bleu'>Détenteur des droits</span> : <?php echo $metadiverses['rightsHolder']; ?></li>
-			<?php endif; ?>
+            	<li><span class='bleu'>Détenteur des droits</span> : <?php echo $metadiverses['rightsHolder']; ?></li>
 			<?php endif; ?>
 			
 			<?php if(strlen($this->item->rights) > 0) : ?>
             <!--<li><span class='bleu'>Conservation des fichiers numériques</span> : <?php // echo $metadiverses['audienceEducationLevel']; ?></li>
             <li><span class='bleu'>Documenté par</span> : (pas de référence vue dans la base)</li>-->
-            <li><span class='bleu'>Statut juridique</span> : <?php echo $this->item->rights; ?></li>
-			<?php endif; ?>
+            	<li><span class='bleu'>Statut juridique</span> : <?php echo $this->item->rights; ?></li>
 			<?php endif; ?>
         </ul>

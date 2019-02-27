@@ -18,23 +18,26 @@ $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 $ordering 	= $this->state->get('list.ordering')=='ordering';
 $n			= count($this->items);
+
+// Récupérer l'id de la collection à afficher pour la réatribuer
+$id_collection = '';
+$jinput = JFactory::getApplication()->input;
+
+if($jinput->get('filter_collection', '', 'INT')){
+	$id_collection = "&filter_collection=".$jinput->get('filter_collection', 'default_value', 'filter');
+}
+
 ?>
 <?php foreach($this->items as $i => $item):
 		$ordering	= ($listOrder == 'ordering');
-//		$canCreate	= $user->authorise('core.create',		'com_l21oai25.category.'.$item->catid);
-//		$canEdit	= $user->authorise('core.edit',			'com_l21oai25.entry.'.$item->id);
-//		$canCheckin	= $user->authorise('core.manage',		'com_checkin') || $item->checked_out == $userId || $item->checked_out == 0;
-//		$canEditOwn	= $user->authorise('core.edit.own',		'com_l21oai25.entry.'.$item->id) && $item->created_by == $userId;
-//		$canChange	= $user->authorise('core.edit.state',	'com_l21oai25.entry.'.$item->id) && $canCheckin;
 ?>
 	<tr class="row<?php echo $i % 2; ?>">
 		<td>
 			<?php echo JHtml::_('grid.id', $i, $item->id_notice); ?>
 		</td>
 		<td>
-                    <a href="<?php echo JRoute::_('index.php?option=com_nemateria&task=notice.edit&id_notice='.$item->id_notice);?>">
+                    <a href="<?php echo JRoute::_('index.php?option=com_nemateria&task=notice.edit&id_notice='.$item->id_notice.$id_collection);?>">
 			<?php echo $this->escape($item->title); ?></a>
-			<p class="smallsub">
 		</td>
 		<td>
 			<?php echo JHtml::_('jgrid.published', $item->published, $i, 'records.', 'cb'); ?>

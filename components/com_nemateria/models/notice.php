@@ -65,10 +65,10 @@ class NemateriaModelNotice extends JModelList
 			$app = JFactory::getApplication();
 
 		}
+		
 		parent::__construct($config);
 		$id = JRequest::getVar('id_notice', 0);
 		
-		// $this->_id = preg_replace("/[^0-9\.]/", '', $id); //$id;
         $this->_id = strstr($id, ':', true);
 	}
 

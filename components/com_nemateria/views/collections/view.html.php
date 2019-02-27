@@ -17,10 +17,9 @@ class NemateriaViewCollections  extends JViewLegacy
 {
 
 	protected $state = null;
-
 	protected $items = null;
-
 	protected $pagination = null;
+    protected $series = null;
 	
 	public function display($tpl = null)
 	{
@@ -31,18 +30,14 @@ class NemateriaViewCollections  extends JViewLegacy
 		$state 		= $this->get('State');
 		$items 		= $this->get('Items');
 		$pagination	= $this->get('Pagination');
+        $series     = $this->get('Series');
 
 		// Prepare the data.
 		// Compute the weblink slug & link url.
 		for ($i = 0, $n = count($items); $i < $n; $i++)
 		{
 			$item		= &$items[$i];
-			
-
-			$temp = new JRegistry;
-			$temp->loadString($item->params);
-			$item->params = clone($params);
-			$item->params->merge($temp);
+							$item->slug	= $item->alias ? ($item->id_collection.':'.$item->alias) : $item->id_collection;
 		}
 		
 		
@@ -57,10 +52,30 @@ class NemateriaViewCollections  extends JViewLegacy
 		$this->items      = &$items;
 		$this->params     = &$params;
 		$this->pagination = &$pagination;
+        $this->series     = &$series;
+        
 		//Escape strings for HTML output
 		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx'));		
 		
 		$this->_prepareDocument();
+		
+		// Orientation vers le template identifié dans le menu : option Type
+		if(isset($this->type_collection)){
+			if(isset($this->gabarit)){
+				$tpl = $this->type_collection."_".$this->gabarit;
+			}else{
+				$tpl = $this->type_collection;
+			}
+		}
+		// Chargement de JQuery en premier pour éviter les erreurs
+		JHtml::_('jquery.framework');
+		// Ajout de scripts communs
+		$document = JFactory::getDocument();
+		$document->addScript('media/com_nemateria/js/nemateria.js');
+		$document->addStyleSheet('media/com_nemateria/css/nemateria.css');
+		
+		// Charger le Helper avec les fonctions de manipulation des données
+		JLoader::register('NemateriaHelperUtils', JPATH_COMPONENT . '/helpers/nemateria.utils.php');
 		
 		parent::display($tpl);
 	}
@@ -74,11 +89,13 @@ class NemateriaViewCollections  extends JViewLegacy
 		$menus		= $app->getMenu();
 		$pathway	= $app->getPathway();
 		$title 		= null;
-
+		
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
 		$menu = $menus->getActive();
-
+		// EXLINEO - Gestion des champs 'Collection' (lid_collection) et du type de collection pour l'affichage (tpl)
+		$this->ids_collection = $menu->query['id_collection'];
+		
 		if ($menu)
 		{
 			$this->params->def('page_heading', $this->params->get('page_title', $menu->title));
@@ -87,8 +104,6 @@ class NemateriaViewCollections  extends JViewLegacy
 		{
 			$this->params->def('page_heading', JText::_('COM_NEMATERIA_DEFAULT_PAGE_TITLE'));
 		}
-
-		$id = (int) @$menu->query['id'];
 
 
 		$title = $this->params->get('page_title', '');
@@ -122,7 +137,7 @@ class NemateriaViewCollections  extends JViewLegacy
 		{
 			$this->document->setMetadata('robots', $this->params->get('robots'));
 		}
-
+		
 	}	
 }
 ?>

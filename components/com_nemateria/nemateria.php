@@ -11,8 +11,8 @@
 //--No direct access
 defined('_JEXEC') or die('Resrtricted Access');
 
-require_once JPATH_COMPONENT.'/helpers/route.php';
+// require_once JPATH_COMPONENT.'/helpers/route.php';
 
-$controller = JControllerLegacy::getInstance('nemateria');
+$controller = JControllerLegacy::getInstance('Nemateria');
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

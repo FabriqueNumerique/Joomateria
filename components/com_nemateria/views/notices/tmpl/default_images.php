@@ -24,11 +24,13 @@ $document->addScript('media/com_nemateria/js/flexslider.init.js');
 <div class="componentheading<?php echo $this->escape($this->get('pageclass_sfx')); ?>"><h2><?php echo $this->params->get('page_title');  ?></h2></div>
 
 <main id="recherche">
-    <header id="series">
-        <?php foreach ($this->series as $s): ?>
-        <a href="<?php echo NemateriaHelperUtils::setSerieUrl(JUri::getInstance(), $s);?>" title="<?php echo $s; ?>" class="<?php echo NemateriaHelperUtils::setSerieClasse(urldecode(JUri::getInstance()), $s); ?>" ><?php echo $s; ?></a>
-        <?php endforeach; ?>
-    </header>
+	<?php if(isset($this->series) && count($this->series) > 0): ?>
+		<header id="series">
+			<?php foreach ($this->series as $s): ?>
+			<a href="<?php echo NemateriaHelperUtils::setSerieUrl(JUri::getInstance(), $s);?>" title="<?php echo $s; ?>" class="<?php echo NemateriaHelperUtils::setSerieClasse(urldecode(JUri::getInstance()), $s); ?>" ><?php echo $s; ?></a>
+			<?php endforeach; ?>
+		</header>
+	<?php endif; ?>
     <div class="message invisible"></div>
     <section class="slider">
         <div id="slider" class="flexslider">

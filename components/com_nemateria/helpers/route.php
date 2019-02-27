@@ -28,21 +28,24 @@ abstract class NemateriaHelperRoute
 	/**
 	 * @param	int	The route of the exlineo
 	 */
-	public static function getNemateriaRoute($id, $catid)
+	public static function getNemateriaRoute($id, $id_collection)
 	{
 		$needles = array(
 			'notices'  => array((int) $id)
 		);
 		//Create the link
-		$link = 'index.php?option=com_nemateria&view=notices&id_notice='. $id;
-		if ($catid > 1) {
+		
+		if ($id_collection > 1) {
 			$categories = JCategories::getInstance('Notice');
-			$category = $categories->get($catid);
+			$category = $categories->get($id_collection);
 			if ($category) {
 				$needles['category'] = array_reverse($category->getPath());
 				$needles['categories'] = $needles['category'];
-				$link .= '&catid='.$catid;
+				$link .= '&catid='.$id_collection;
 			}
+			$link = 'index.php?option=com_nemateria&view=notices&id_notice='. $id;
+		}else{
+			$link = 'index.php?option=com_nemateria&view=notice&id_notice='. $id;
 		}
 
 		if ($item = NemateriaHelperRoute::_findItem($needles)) {
@@ -55,19 +58,19 @@ abstract class NemateriaHelperRoute
 
 	/**
 	 * Returns link to category view  
-	 * @param JCategoryNode $catid
+	 * @param JCategoryNode $id_collection
 	 * @param number $language
 	 * @return string
 	 */
 
-	public static function getCategoryRoute($catid, $language = 0)
+	public static function getCategoryRoute($id_collection, $language = 0)
 	{
 		
 		
-		if ($catid instanceof JCategoryNode)
+		if ($id_collection instanceof JCategoryNode)
 		{
-			$id = $catid->id;			
-			$category = $catid;			 
+			$id = $id_collection->id;
+			$category = $id_collection;
 		}
 		else
 		{			
@@ -85,7 +88,7 @@ abstract class NemateriaHelperRoute
 		else
 		{
 			//Create the link
-			$link = 'index.php?option=com_nemateria&view='.$view.'&category='.$category->slug;
+			$link = 'index.php?option=com_nemateria&view='.$view.'&collection='.$category->slug;
 			
 			$needles = array(
 					$view => array($id),
@@ -121,9 +124,9 @@ abstract class NemateriaHelperRoute
 			{
 				if ($category)
 				{
-					$catids = array_reverse($category->getPath());
+					$id_collections = array_reverse($category->getPath());
 					$needles = array(
-							'category' => $catids
+							'category' => $id_collections
 					);
 					if ($item = self::_findItem($needles,'category'))
 					{

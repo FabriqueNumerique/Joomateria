@@ -25,7 +25,7 @@ class NemateriaViewRecherche  extends JViewLegacy
 	public function display($tpl = null)
 	{
 		$document = JFactory::getDocument();
-		$document->addStyleSheet('components/com_nemateria/assets/css/recherche.css');
+		$document->addStyleSheet(JPATH_COMPONENT.'/assets/css/recherche.css');
 		// $document->addScript($url);
 		
 		$app = JFactory::getApplication();
@@ -63,13 +63,23 @@ class NemateriaViewRecherche  extends JViewLegacy
 		$this->params     = &$params;
 		$this->pagination = &$pagination;
 		//Escape strings for HTML output
-		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx'));		
+		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx'));
+		
+		// Chargement de JQuery en premier pour éviter les erreurs
+		JHtml::_('jquery.framework');
+		// Ajout de scripts communs
+		$document = JFactory::getDocument();
+		$document->addScript('media/com_nemateria/js/nemateria.js');
+		$document->addStyleSheet('media/com_nemateria/css/nemateria.css');
+		
+		// Charger le Helper avec les fonctions de manipulation des données
+		JLoader::register('NemateriaHelperUtils', JPATH_COMPONENT . '/helpers/nemateria.utils.php');
 		
 		$this->_prepareDocument();
 		
-		// parent::display($tpl);
+		parent::display($tpl);
 		// EXLINEO > CALER LE TYPE DE FICHIER SELECTIONNE, LE SECOND PARAMETRE PERMET DE SAVOIR SI C'EST UNE PAGE MULTIMEDIAS
-		parent::display(gere_type($tmpl, JRequest::getVar('m')));
+		// parent::display(gere_type($tmpl, JRequest::getVar('m')));
 		
 		/*echo 'TMPL >'.$tmpl.'Template choisi > '.gere_type($tmpl);*/
 	}

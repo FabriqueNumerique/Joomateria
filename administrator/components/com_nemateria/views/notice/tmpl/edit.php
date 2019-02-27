@@ -18,9 +18,8 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 ?>
-
-<form action="<?php echo JRoute::_('index.php?option=com_nemateria&layout=edit&id_notice='.(int) $this->item->id_notice); ?>" method="post" name="adminForm" id="entry-form" class="form-validate">
-    <div class="width-80 fltlft">
+<section id="nemateriaAdmin">
+<form action="<?php echo JRoute::_('index.php?option=com_nemateria&layout=edit&id_notice='.(int) $this->item->id_notice); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
         <fieldset class="adminform" name="detail" label="detail">
             <legend><?php echo  JText::_('COM_NEMATERIA_DETAILS', $this->item->id_notice); ?></legend>
             <ul class="adminformlist">
@@ -82,7 +81,8 @@ JHtml::_('behavior.formvalidation');
 
                 <li><?php echo $this->form->getLabel('source'); ?>
                     <?php echo $this->form->getInput('source'); ?></li>
-
+				</ul>
+				<ul class="adminformlist">
                 <li><?php echo $this->form->getLabel('language'); ?>
                     <?php echo $this->form->getInput('language'); ?></li>
 
@@ -106,8 +106,8 @@ JHtml::_('behavior.formvalidation');
 
                 <li><?php echo $this->form->getLabel('id_notice'); ?>
                     <?php echo $this->form->getInput('id_notice'); ?></li>
+			</ul>
                 <div class="clr"></div>
-            </ul>
         </fieldset>
         <fieldset class="adminform" name="ressource" label="ressource">
             <legend><?php echo  JText::_('COM_NEMATERIA_RESSOURCES', $this->item->id_notice); ?></legend>
@@ -140,11 +140,8 @@ JHtml::_('behavior.formvalidation');
                 </li>
             </ul>
         </fieldset>
-    </div>
-
 
     <input type="hidden" name="task" value="" />
     <?php echo JHtml::_('form.token'); ?>
 </form>
-
-<div class="clr"></div>
+</section>

@@ -2,13 +2,40 @@
 <metadata>
 	<layout title="LISTE DE COLLECTIONS">
 		<help
-			key = "Lister les collections disponibles"
+			key = "Choisir une liste de notices en les triant avec une option"
 		/>
 		<message>
-			<![CDATA[Lister les collections disponibles]]>
+			<![CDATA[Choisir une ou plusieurs collections à afficher en liste (de notices)]]>
 		</message>
 	</layout>
-		<!-- Add fields to the parameters object for the layout. -->
-	<fields name="params">
+	<!-- Add fields to the parameters object for the layout.-->
+	<fields name="request">
+		<!-- EXLINEO - Ajout d'un champ listant les collections et d'un champ pour choisir le type de collection -->
+		<fieldset name="request"
+			addfieldpath="/administrator/components/com_nemateria/models/fields"
+		>
+			<field
+				name="id_collection"
+				type="sql"
+				label="CHOISISSEZ UNE OU DES COLLECTION(S)"
+				query="SELECT id_collection, title FROM #__nemateria_collections"
+				key_field="id_collection"
+				value_field="title"
+				required="true"
+				multiple="true"
+			/>
+			
+			<field 
+				   name="aseries"
+				   type="radio"
+				   default="0"
+				   label="SERIES"
+				   required="true"
+				   description="Merci d'indiquer si ce tri comporte des séries">
+						<option value="0">JNO</option>
+  						<option value="1">JYES</option>
+			</field>
+            
+		</fieldset>
 	</fields>
 </metadata>

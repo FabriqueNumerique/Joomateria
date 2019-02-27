@@ -20,10 +20,10 @@
     <section id="ressource" class="partage">
         <!-- INSERER UNE VIDEO -->
     <article id="zonevideo" class="moitier">
-        <div id='video_exlineo'>Il semble que vous n'ayez pas le lecteur Flash. <a href="https://get.adobe.com/fr/flashplayer/" target="_blank">Merci de l'installer pour consulter les ressources multimédia de ce site Internet.</a></div>
+        <div id='video_nemateria'>Il semble que vous n'ayez pas le lecteur Flash. <a href="https://get.adobe.com/fr/flashplayer/" target="_blank">Merci de l'installer pour consulter les ressources multimédia de ce site Internet.</a></div>
 			<script type='text/javascript'>
               jwplayer.key='mdg3Hk8Xq/Q0L0njCmlZaJ8yxm0+RjA+DbF9rg==';
-			  jwplayer('video_exlineo').setup({
+			  jwplayer('video_nemateria').setup({
 				file:'<?php echo $liens[1]; ?>',
 				modes: [
 					{ type: 'html5' },
@@ -36,7 +36,7 @@
 				height:'100%'
 			  });
 			  // Suivre le déroulé de la lecture pour modifier la playliste
-			  jwplayer('video_exlineo').on('time', function(e) { 
+			  jwplayer('video_nemateria').on('time', function(e) { 
 				// Lister les séquences et modifier les classes
 				change_playliste(Math.floor(e.position));
 			  });

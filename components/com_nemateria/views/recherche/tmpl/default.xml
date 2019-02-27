@@ -10,21 +10,21 @@
 	</layout>
 		<!-- Add fields to the parameters object for the layout. -->
 	<fields name="request" addfieldpath="/administrator/components/com_nemateria/models/fields">
-                <fieldset name="request">
-                        <field name="champ" type="list" default="" label="Choisissez un champ de recherche" description="">
-						  <option value=""></option>
-						  <option value="id_notice">Id des collections</option>
-						</field>
-						<field
-                                name="valeur"
-                                type="text"
-                                label="COM_NEMATERIA_RECHERCHE_CHAMP2_LABEL"
-                                description="COM_NEMATERIA_RECHERCHE_CHAMP2_DESC"
-                        />
-						<field name="m" type="radio" default="0" label="Collection multimédia" description="">
-						  <option value="0">Non</option>
-						  <option value="1">Oui</option>
-						</field>
-                </fieldset>
-        </fields>
+          <fieldset name="request">
+               <field name="champ" type="list" default="" label="Choisissez un champ de recherche" description="">
+					<option value=""></option>
+					<option value="id_notice">Id des collections</option>
+				</field>
+				<field
+                     name="valeur"
+                     type="text"
+                     label="COM_NEMATERIA_RECHERCHE_CHAMP2_LABEL"
+                     description="COM_NEMATERIA_RECHERCHE_CHAMP2_DESC"
+                 />
+				<field name="m" type="radio" default="0" label="Collection multimédia" description="">
+					<option value="0">Non</option>
+					<option value="1">Oui</option>
+				</field>
+          </fieldset>
+    </fields>
 </metadata>

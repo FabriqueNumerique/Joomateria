@@ -34,7 +34,8 @@ class NemateriaViewNotice  extends JViewLegacy
 		for ($i = 0, $n = count($item); $i < $n; $i++)
 		{
 			$item		= &$item[$i];
-							$item->slug	= $item->alias ? ($item->id_notice.':'.$item->alias) : $item->id_collection;
+			$item->slug = $item->alias ? ($item->id_notice.':'.$item->title) : $item->id_notice;
+			// $item->slug	= $item->alias ? ($item->id_notice.':'.$item->alias) : $item->id_collection;
 		}
 		
 		

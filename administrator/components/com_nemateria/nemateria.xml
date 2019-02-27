@@ -2,7 +2,7 @@
 <extension type="component" version="3.0" method="upgrade">
     <name>com_nemateria</name>
     <author>exlineo</author>
-    <creationDate>February 2018</creationDate>
+    <creationDate>Janvier 2019</creationDate>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>contact@exlineo.com</authorEmail>
     <authorUrl>www.exlineo.com</authorUrl>

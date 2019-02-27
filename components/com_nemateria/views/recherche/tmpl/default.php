@@ -1,41 +1,84 @@
 <?php
 // no direct access
-	defined('_JEXEC') or die('Restricted access');
-	require_once(JPATH_ROOT.DS.'components/com_nemateria/assets/lib/actions.php');
+defined('_JEXEC') or die('Restricted access');
+
+// Récupérer la liste des collections
+
+
 ?>
 <div class="componentheading<?php echo $this->escape($this->get('pageclass_sfx')); ?>"><h2><?php echo $this->params->get('page_title');  ?></h2></div>
 
-<div id="recherche">
-	<h3>Des éléments présents</h3>
-	<?php foreach ($this->items as $i => $item) : 
-		//you may want to do this anywhere else				
-		$item->slug	= $item->alias ? ($item->id_notice.':'.$item->alias) : $item->id_notice;
-		$link = JRoute::_('index.php?option=com_nemateria&view=notice&id='. $item->slug);
-				
-		// Création des variables à exploiter
-		// $champs_str = str_replace( "\n" , "&" , $item->champs);
-		$vars = set_variables($item->champs);
-	?>
+
+<main id="recherche">
+	<article>
+		
+		<form id="rechercheCollections">
+			<div>
+				<label for="mots">Rechercher</label>
+				<input type="text" name="mots" placeholder="Saisissez votre recherche"/>
+			</div>
+			<div>
+				<p>Format des médias</p>
+				<input type="radio" name="format" value="image">
+				<input type="radio" name="format" value="mp4">
+				<input type="radio" name="format" value="mp3">
+				<input type="radio" name="format" value="text">
+			</div>
+			<div>
+				<p>Collections</p>
+				<select name="collections">
+					<option>Choisissez une ou plusieurs collections</option>
+				</select>
+			</div>
+    			<input type="submit" value="Rechercher des notices" />
+		</form>
+	
+	</article>
+
+<?php 
+	if(isset($this->items)):
+		foreach ($this->items as $i => $item):
+		// $tmp_descr = $item->subject;
+
+		// if(strlen($item->subject) < 10):			
+			$item->slug	= $item->alias ? ($item->id_notice.':'.$item->alias) : $item->id_notice;
+			$link = JRoute::_('index.php?option=com_nemateria&view=notice&id_notice='.$item->slug);
+			// TRAITER LES METADONNEES DEPUIS LE CHAMP... CHAMPS
+			$metadiverses = NemateriaHelperUtils::set_variables($item->champs);
+			// RECUPERER LES SEQUENCES
+			$liens = NemateriaHelperUtils::identifiant_lien($item->identifier);
+			$format = NemateriaHelperUtils::types($item->format);
+?>
     
-    <div class="resultat <?php if(isset($item->format)) echo gere_type($item->format); ?>">
-        	<div class="meta">
-            	  <p><?php  if(isset($vars['extent'])) echo $vars['extent']; ?></p>
-            	  <?php  if(isset($sequences)) echo '<p>'.$sequences.' séquences</p>'; ?>
-            	  <p>Réf. : <?php  echo $item->identifier; ?></p>
-            	  <p>Date : <?php  echo $item->date; ?></p>
-            	</div>
-                <div class="picto">
-                  <p><img src="<?php echo JURI::root(); ?>images/icones/media_<?php if(isset($item->format)) echo gere_type($item->format); ?>.png" width="50" height="50"></p>
-                  <p><a href="<?php echo $link ?>"><img src="<?php echo JURI::root(); ?>images/icones/media_lecture.png" width="50" height="50"></a></p>
-            </div>
-            <div class="image"> <img src="<?php echo JURI::root(); ?>images/collections/collection_mary_hella_200.jpg" alt="" width="200" height="200" class="image"></div>
-            <div class="infos">
-              <h3><a href="<?php echo $link ?>"><?php  echo $item->title.' ('.$item->id_notice.')'; ?></a></h3>
-              <p><?php  if(isset($vars['accrualMethod'])) echo $vars['accrualMethod'].", "; if(isset($vars['accrualPeriodicity'])) echo $vars['accrualPeriodicity']; ?></p>
-              <p><?php  echo $item->description; ?></p>
-        	</div>
-         </div>
+    <article class="resultat <?php if(isset($item->format)) echo $format; ?>">
+        <div class="image">
+            <a href="<?php echo $link ?>"><img src="<?php echo JURI::root(); ?>images/collections/vignettes/<?php echo $liens[0]; ?>.jpg" alt="<?php  echo $item->titre; ?>" class="image"></a>
+        </div>
+        <div class="infos">
+            <h3><a href="<?php echo $link ?>"><?php  echo $item->title; ?></a></h3>
+            <p>
+			<?php  if(isset($item->creator)) echo $item->creator; ?>
+			<?php  // if(isset($metadiverses['accrualMethod'])) echo $metadiverses['accrualMethod'].", "; if(isset($metadiverses['accrualPeriodicity'])) echo $metadiverses['accrualPeriodicity']; ?></p>
+            <p><?php  echo NemateriaHelperUtils::set_texte($item->description, 375); ?></p>
+        </div>    
+    
+        <div class="picto">
+            <p><a href="<?php echo $link ?>"><img src="<?php echo JURI::root(); ?>images/icones/media_lecture.png" class="picto-media"></a></p>
+            <p class="lire_suite"><a href="<?php echo $link ?>"><img src="<?php echo JURI::root(); ?>images/icones/media_<?php echo $format; ?>_mini.png" class="picto-media-mini"></a></p>
+        </div>
+        <div class="meta">
+            <?php  echo $item->type; ?><br/>
+            <?php  if(isset($metadiverses['extent'])) echo $metadiverses['extent'].'<br/>'; ?>
+            <?php  if(isset($sequences)) echo $sequences.' séquences'.'<br/>'; ?>
+            Langue : <?php  echo $item->language.'<br/>'; ?>
+            Réf. : <?php  echo $liens[0].'<br/>'; ?>
+            Date : <?php  echo $item->date; ?>
+        </div>
+    </article>
+    
 <?php endforeach; ?>
+<?php endif; ?>
 <!-- AJOUT DE LA PAGINATION JOOMLA -->
-<?php echo $this->pagination->getListFooter(); ?>
-</div>
+<?php echo $this->pagination->getListFooter(); ?>	
+</main>
+ 

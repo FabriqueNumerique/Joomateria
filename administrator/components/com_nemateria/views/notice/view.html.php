@@ -34,14 +34,7 @@ class NemateriaViewNotice extends JViewLegacy
     {
         jimport('joomla.filesystem.file');
 
-
         $document = JFactory::getDocument();
-        /**JHTML::script('jquery-1.6.js', 'administrator/components/com_nemateria/assets/scripts/');
-        JHTML::script('swfobject.js', 'administrator/components/com_nemateria/assets/scripts/');
-        JHTML::script('jquery.uploadify.v2.1.4.js', 'administrator/components/com_nemateria/assets/scripts/');
-        JHTML::script('import_doc.js', 'administrator/components/com_nemateria/assets/scripts/');
-        JHTML::stylesheet('uploadify.css', 'administrator/components/com_nemateria/assets/css/');
-        $document->addCustomTag( '<script type="text/javascript">jQuery.noConflict();</script>' );**/
 
         // Initialiase variables.
         $this->form = $this->get('Form');

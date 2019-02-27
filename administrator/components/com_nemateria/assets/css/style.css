@@ -1,1 +1,98 @@
-/* CSS Document */.icon-32-l21oai_back{    background-image:url(../images/previous.png);}.icon-48-l21	{	background-image:url(../images/l21.png);        width:250px;        height:50px;}.icon-32-l21oai_set	{	background-image:url(../images/agt_reload.png);}.icon-48-store_manager	{	background:url(../images/folder_red.png);}.icon-48-set_manager	{	background-image:url(../images/folder_green.png);}.icon-48-metadata_manager	{	background-image:url(../images/folder_blue.png);}.icon-48-ressource_manager	{	background-image:url(../images/folder_blue.png);}.icon-48-oai_config	{	background-image:url(../images/kcmsystem.png);}
+/* CSS Document */
+#nemateriaAdmin{
+	display:flex;
+	flex-flow:row wrap;
+	font-size:110%;
+}
+#nemateriaAdmin.accueil{
+	flex-flow:row wrap;
+}
+#nemateriaAdmin.accueil article{
+	width:45%;
+	padding:0 10px;
+}
+#nemateriaAdmin form{
+	display:flex;
+	flex-flow:column wrap;
+	width:100%;
+}
+#nemateriaAdmin form ul li{
+	list-style: none;
+}
+#nemateriaAdmin fieldset{
+	display:flex;
+	flex-flow:row wrap;
+	min-height:75px;
+	/*width:100%;*/
+}
+#nemateriaAdmin fieldset ul.adminformlist{
+	width:50%;
+}
+#nemateriaAdmin fieldset ul>*{
+	/*margin:0 15px;
+	padding:10px 20px;*/
+}
+#nemateriaAdmin fieldset ul label{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#nemateriaAdmin fieldset ul li:nth-child(even){
+}
+#nemateriaAdmin select[multiple], #nemateriaAdmin textarea {
+	min-height:100px;
+}
+#nemateriaAdmin textarea {
+	min-width:400px;
+}
+#nemateriaAdmin .adminlist{
+	width:100%;
+}
+#nemateriaAdmin .adminlist tr:nth-child(even){
+	background-color:#E9E9E9;
+}
+#nemateriaAdmin .adminlist tr:nth-child(odd){
+	background-color:#FFF;
+}
+#nemateriaAdmin .adminlist tr td:last-child{
+	text-align:center;
+}
+#nemateriaAdmin .adminlist td a{
+	padding:10px;
+	display:block;
+	vertical-align: middle;
+	text-decoration: none;
+	transition:all .3s ease;
+}
+#nemateriaAdmin .adminlist td a:hover{
+	background-color:green;
+	color:#FFF;
+}
+#nemateriaAdmin .adminlist input[type="checkbox"]{
+	margin:10px;
+}
+
+.icon-32-l21oai_back{
+	background-image:url(../images/previous.png);
+}
+.icon-48-l21	{
+	background-image:url(../images/l21.png);
+	width:250px;
+	height:50px;}
+.icon-32-l21oai_set	{
+	background-image:url(../images/agt_reload.png);
+}
+.icon-48-store_manager	{
+	background:url(../images/folder_red.png);
+}
+.icon-48-set_manager	{
+	background-image:url(../images/folder_green.png);
+}
+.icon-48-metadata_manager	{
+	background-image:url(../images/folder_blue.png);
+}
+.icon-48-ressource_manager	{
+	background-image:url(../images/folder_blue.png);
+}
+.icon-48-oai_config	{
+	background-image:url(../images/kcmsystem.png);
+}

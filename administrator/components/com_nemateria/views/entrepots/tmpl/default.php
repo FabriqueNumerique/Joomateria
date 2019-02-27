@@ -19,19 +19,26 @@ JHtml::_('behavior.tooltip');
 //$listOrder	= $this->escape($this->state->get('list.ordering'));
 //$listDirn	= $this->escape($this->state->get('list.direction'));
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_nemateria&view=entrepots'); ?>" method="post" name="adminForm">
-	<?php echo $this->loadTemplate('filter');?>
-	<table class="adminlist">
-		<thead><?php echo $this->loadTemplate('head');?></thead>
-		<tfoot><?php echo $this->loadTemplate('foot');?></tfoot>
-		<tbody><?php echo $this->loadTemplate('body');?></tbody>
-	</table>
-	<div>
-		<input type="hidden" name="task" value="" />
-		<input type="hidden" name="boxchecked" value="0" />
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-		<?php echo JHtml::_('form.token'); ?>
-	</div>
-</form>
-
+<section id="nemateriaAdmin">
+	<form action="<?php echo JRoute::_('index.php?option=com_nemateria&view=entrepots'); ?>" method="post" name="adminForm" id="adminForm">
+		<table>
+			<tr>
+				<td>
+				<?php echo $this->loadTemplate('filter');?>
+				</td>
+			</tr>
+		</table>
+		<table class="adminlist">
+			<thead><?php echo $this->loadTemplate('head');?></thead>
+			<tfoot><?php echo $this->loadTemplate('foot');?></tfoot>
+			<tbody><?php echo $this->loadTemplate('body');?></tbody>
+		</table>
+		<div>
+			<input type="hidden" name="task" value="" />
+			<input type="hidden" name="boxchecked" value="0" />
+			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+			<?php echo JHtml::_('form.token'); ?>
+		</div>
+	</form>
+</section>
