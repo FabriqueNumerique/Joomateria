@@ -10,6 +10,7 @@ $document->addScript('media/com_nemateria/js/jquery.mousewheel.js');
 $document->addScript('media/com_nemateria/js/jquery.easing.js');
 $document->addScript('media/com_nemateria/js/jquery.flexslider.js');
 $document->addScript('media/com_nemateria/js/flexslider.init.js');
+
 ?>
 <section id="attente">
     <div class="conteneur">
@@ -27,7 +28,9 @@ $document->addScript('media/com_nemateria/js/flexslider.init.js');
 	<?php if(isset($this->series) && count($this->series) > 0): ?>
 		<header id="series">
 			<?php foreach ($this->series as $s): ?>
-			<a href="<?php echo NemateriaHelperUtils::setSerieUrl(JUri::getInstance(), $s);?>" title="<?php echo $s; ?>" class="<?php echo NemateriaHelperUtils::setSerieClasse(urldecode(JUri::getInstance()), $s); ?>" ><?php echo $s; ?></a>
+				<?php if(strlen($s)>0) : ?>
+					<a href="<?php echo NemateriaHelperUtils::setSerieUrl(JUri::getInstance(), $s);?>" title="<?php echo $s; ?>" class="<?php echo NemateriaHelperUtils::setSerieClasse(trim(JRequest::getVar('serie')), trim($s)) ?>" ><?php echo trim($s); ?></a>
+				<?php endif; ?>
 			<?php endforeach; ?>
 		</header>
 	<?php endif; ?>
@@ -43,7 +46,14 @@ $document->addScript('media/com_nemateria/js/flexslider.init.js');
             $metadiverses = NemateriaHelperUtils::set_variables($item->champs);
             // RECUPERER LES SEQUENCES
             $liens = NemateriaHelperUtils::identifiant_lien($item->identifier);
+			  
+		
+			// Identifier s'il s'agit d'une image de présentation d'une série
+			$descrpos = strpos($item->subject, 'descriptif');
+			 if($descrpos !== false) $detailSerie = $item;
+			  
             ?>
+			<?php if($descrpos === false): ?>
             <li>
                   <!-- AFFICHER LE MEDIA -->
                   <img id="img_<?php echo $item->id_notice; ?>" class="lazy" data-src="<?php echo $liens[1]; ?>" onclick="lightbox('<?php echo $liens[1]; ?>')"/>
@@ -165,11 +175,11 @@ $document->addScript('media/com_nemateria/js/flexslider.init.js');
                                   <!--<h4>Description</h4>-->
                                   <?php // echo $item->description; ?>
                             </div>
-                          <!-- -->
-                            <div id="collection_<?php echo $item->id_notice; ?>" class="tab">
-                              <h3><?php echo $serie_actuelle->title; ?></h3>
-                              <p><?php echo $serie_actuelle->description; ?></p>
-                            </div>
+                          <!-- 
+                            <div id="collection_<?php // echo $item->id_notice; ?>" class="tab">
+                              <h3><?php // echo $serie_actuelle->title; ?></h3>
+                              <p><?php // echo $serie_actuelle->description; ?></p>
+                            </div>-->
                             <!-- Ajout d'un formulaire pour les commentaires -->
                               <div id="commenter_<?php echo $item->id_notice; ?>" class="tab">
 								  <?php require(JPATH_COMPONENT.'/helpers/html/forms/contribuer.php'); ?>
@@ -178,30 +188,42 @@ $document->addScript('media/com_nemateria/js/flexslider.init.js');
                           <!-- -->
                       </div>
                     </div>
-            </li>
-		      <?php endforeach; ?>
+            	</li>
+			  <?php endif; ?>
+		     <?php endforeach; ?>
 	      </ul>
     </div>
     </section>
     <!-- Affichage des vignettes -->
     <section>
+		<!-- Afficher la description de la série -->
+		<?php if(isset($detailSerie)): ?>
+			<article class="serie">
+				<p><?php echo $item->description; ?></p>
+			</article>
+		<?php endif; ?>
+		
         <?php  
             foreach ($this->items as $i => $item):
-            // $tmp_descr = $item->subject;
-
-            // if(strlen($item->subject) < 10):			
+				
                 $item->slug	= $item->alias ? ($item->id_notice.':'.$item->alias) : $item->id_notice;
                 $link = JRoute::_('index.php?option=com_nemateria&view=notice&id_notice='.$item->slug);
                 // TRAITER LES METADONNEES DEPUIS LE CHAMP... CHAMPS
                 $metadiverses = NemateriaHelperUtils::set_variables($item->champs);
                 // RECUPERER LES SEQUENCES
                 $liens = NemateriaHelperUtils::identifiant_lien($item->identifier);
-                $format = NemateriaHelperUtils::types($item->format);
+                $format = NemateriaHelperUtils::types($item->format);  
+			  
+		
+				// Identifier s'il s'agit d'une image de présentation d'une série
+				$descrpos = strpos($item->subject, 'descriptif');
+		
         ?>
-    
+			<?php if($descrpos === false): ?>
             <article class="resultat <?php if(isset($item->format)) echo $format; ?>">
 
-				  <div class="image" style="background-image:url(<?php echo $liens[1]; ?>)">
+				  <!--<div class="image lazy" style="background-image:url(<?php // echo $liens[1]; ?>)">-->
+				<div class="image lazy" data-src="<?php echo $liens[1]; ?>">
 					<a href="<?php echo $link ?>"></a>
 				  </div>
 				  <div class="infos">
@@ -223,7 +245,7 @@ $document->addScript('media/com_nemateria/js/flexslider.init.js');
 						Date : <?php  echo $item->date; ?>
 					</div>
             </article>
-            <?php // endif; ?>
+            <?php endif; ?>
         <?php endforeach; ?>
     </section>
 </main>

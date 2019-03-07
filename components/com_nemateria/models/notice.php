@@ -67,9 +67,16 @@ class NemateriaModelNotice extends JModelList
 		}
 		
 		parent::__construct($config);
+		
+		// Récupérer l'identifiant de la notice à afficher
 		$id = JRequest::getVar('id_notice', 0);
 		
-        $this->_id = strstr($id, ':', true);
+		$idpos = strpos($id, ':');
+		if($idpos !== false){
+			$this->_id = substr($id, 0, $idpos);
+		}else{
+			$this->_id = $id;
+		}
 	}
 
 	/**

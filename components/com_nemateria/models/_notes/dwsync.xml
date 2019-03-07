@@ -17,9 +17,9 @@
 <file name="search.php" server="ftp.immaterielles.org/www/" local="131316300394369046" remote="131316300620000000" Dst="1" />
 <file name="vnotice.php" server="ftp.immaterielles.org/www/" local="130463639697066000" remote="130519618800000000" Dst="2" />
 <file name="index.html" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131662822090000000" remote="131662822090000000" Dst="1" />
-<file name="notices.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131939217076285429" remote="131939217090000000" Dst="1" />
+<file name="notices.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131957521115831682" remote="131957521120000000" Dst="1" />
 <file name="collection.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131674968700000000" remote="131674968700000000" Dst="1" />
-<file name="notice.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131916103079461117" remote="131916103080000000" Dst="1" />
+<file name="notice.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131959280778545249" remote="131959280780000000" Dst="1" />
 <file name="collections.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131939662942738353" remote="131939662960000000" Dst="1" />
 <file name="recherche.php" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131909064983429993" remote="131909064990000000" Dst="1" />
 </dwsync>

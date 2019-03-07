@@ -172,19 +172,22 @@ class NemateriaModelNotices extends JModelList
 			// ETAPE 2 - ALLER CHERCHER LES SERIES DANS LES NOTICES DES COLLECTIONS
 			$series = $this->getDbo();
 			$series->setQuery("SELECT DISTINCT SUBSTRING(champs, LOCATE('isPartOf=', champs)+9, LOCATE('accessRights', champs) - LOCATE('isPartOf=', champs) - 9) FROM #__nemateria_notices WHERE champs LIKE '%relation=".$colTitre."%'");
+			
+			// $series->setQuery('SELECT DISTINCT SUBSTRING(champs, LOCATE("isPartOf=", champs)+9, LOCATE("accessRights", champs) - LOCATE("isPartOf=", champs) - 9) FROM #__nemateria_notices WHERE champs LIKE "%relation='.$colTitre.'%"');
 
 			// LISTE DES THEMES ABORDES
-			self::$listeSeries = $series->loadColumn();
-
+			self::$listeSeries = array_filter($series->loadColumn());
+			sort(self::$listeSeries);
+			
 			// Série sélectionnée s'il y a lieu
 			if(JRequest::getVar('serie')){
 				self::$colSeries = JRequest::getVar('serie');
 			}else{
 				self::$colSeries = self::$listeSeries[0];
 			}
-
-			// Ajout de la requête sur la série
-			$collec .= " AND champs LIKE '%isPartOf=".trim(self::$colSeries)."%'";
+			
+			// Ajout de la requête sur la série. Traitement sur la chaîne pour gérer les quotes simples et les retours à la ligne
+			$collec .= " AND champs LIKE '%isPartOf=".str_replace("'", "''", trim(self::$colSeries))."%'";
         }
         // ETAPE 3 - SELECTIONNER LES NOTICES
         $db = $this->getDbo();

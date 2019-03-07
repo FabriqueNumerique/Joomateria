@@ -72,6 +72,7 @@ class NemateriaViewNotices  extends JViewLegacy
 		// Ajout de scripts communs
 		$document = JFactory::getDocument();
 		$document->addScript('media/com_nemateria/js/nemateria.js');
+		$document->addScript('media/com_nemateria/js/jquery.lazy.min.js');
 		$document->addStyleSheet('media/com_nemateria/css/nemateria.css');
 		
 		// Charger le Helper avec les fonctions de manipulation des données

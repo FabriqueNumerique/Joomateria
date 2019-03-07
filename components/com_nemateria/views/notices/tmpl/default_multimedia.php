@@ -5,12 +5,26 @@ defined('_JEXEC') or die('Restricted access');
 <div class="componentheading<?php echo $this->escape($this->get('pageclass_sfx')); ?>"><h2><?php echo $this->params->get('page_title');  ?></h2></div>
 
 <main id="recherche">
+<?php
+	foreach ($this->items as $i => $item){
+		$descrpos = strpos($item->subject, 'descriptif');
+		if($descrpos !== false) $detailSerie = $item;
+	};
+?>
+	
+<!-- Afficher la description de la série -->
+<?php if(isset($detailSerie)): ?>
+	<article class="serie">
+		<p><?php echo $item->description; ?></p>
+	</article>
+<?php endif; ?>
 	
 <?php if(isset($this->series) && count($this->series) > 0): ?>
+	<?php echo JRequest::getVar('serie'); ?>
 	<header id="series">
 		<?php foreach ($this->series as $s): ?>
 			<?php if (strlen($s) > 0) : ?>
-				<a href="<?php echo NemateriaHelperUtils::setSerieUrl(JUri::getInstance(), $s);?>" title="<?php echo $s; ?>" class="<?php echo NemateriaHelperUtils::setSerieClasse(urldecode(JUri::getInstance()), $s); ?>" ><?php echo $s; ?></a>
+				<a href="<?php echo NemateriaHelperUtils::setSerieUrl(JUri::getInstance(), $s);?>" title="<?php echo $s; ?>" class="<?php echo NemateriaHelperUtils::setSerieClasse(trim(JRequest::getVar('serie')), trim($s)); ?>" ><?php echo trim($s); ?></a>
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</header>
@@ -31,11 +45,16 @@ defined('_JEXEC') or die('Restricted access');
         // RECUPERER LES SEQUENCES
         $liens = NemateriaHelperUtils::identifiant_lien($item->identifier);
         $format = NemateriaHelperUtils::types($item->format);
+	
+		$descrpos = strpos($item->subject, 'descriptif');
 ?>
     
-    <article class="resultat <?php if(isset($item->format)) echo $format; ?>">
+    <?php if($descrpos === false): ?>
+	<article class="resultat <?php if(isset($item->format)) echo $format; ?>">
         <div class="image">
-            <a href="<?php echo $link ?>"><img src="<?php echo $liens[1]; ?>" alt="<?php  echo $item->title; ?>" class="image"></a>
+            <a href="<?php echo $link ?>" title="<?php echo $item->title; ?>" style="background-image:url(<?php echo JURI::root(); ?>images/collections/vignettes/<?php echo trim($liens[0]);?>.jpg)" class="image">
+				<!--<img src="<?php // echo $liens[1]; ?>" alt="<?php //echo $item->title; ?>" class="image">-->
+			</a>
         </div>
         <div class="infos">
             <h3><a href="<?php echo $link ?>"><?php  echo $item->title; ?></a></h3>
@@ -58,7 +77,7 @@ defined('_JEXEC') or die('Restricted access');
             Date : <?php  echo $item->date; ?>
         </div>
     </article>
-    <?php // endif; ?>
+    <?php endif; ?>
 <?php endforeach; ?>
 <!-- AJOUT DE LA PAGINATION JOOMLA -->
 <?php echo $this->pagination->getListFooter(); ?>	

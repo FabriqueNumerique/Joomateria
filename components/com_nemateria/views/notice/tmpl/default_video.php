@@ -7,6 +7,7 @@
 			
 	// TRAITER LES METADONNEES DEPUIS LE CHAMP... CHAMPS
     $metadiverses = NemateriaHelperUtils::set_variables($this->item->champs);
+	
     // RECUPERER LES SEQUENCES
     $liens = NemateriaHelperUtils::identifiant_lien($this->item->identifier);
 	
@@ -22,7 +23,10 @@
 </header>
 
 <section id="notice" class="partage">
-    
+    <?php
+        // Ajouter les pictos s'il y a des documents liés
+        require(JPATH_COMPONENT_SITE . '/views/notice/tmpl/utils/documents_lies.php');
+	?>
     <!-- INSERER UNE VIDEO -->
     <article id="zonevideo">
         <div id='video_nemateria'>Il semble que vous n'ayez pas le lecteur Flash. <a href="https://get.adobe.com/fr/flashplayer/" target="_blank">Merci de l'installer pour consulter les ressources multimédia de ce site Internet.</a>
@@ -47,10 +51,6 @@
 				change_playliste(Math.floor(e.position));
 			  });
         </script>
-        <?php
-            // Ajouter les pictos s'il y a des documents liés
-            require(JPATH_COMPONENT_SITE . '/views/notice/tmpl/utils/documents_lies.php');
-		?>
          <?php if(count($sequences['sequence']) > 0): ?>
          	<h4>Résumés des séquences</h4>
             <div id='sequences'>
@@ -69,10 +69,10 @@
 				}
         ?>
 				
-				<div class='sequence' id='seq<?php echo $i; ?>' value=<?php echo intval($sequences['sequence'][$i]/$vars['references']);?> <?php echo $cache;?>>
+				<div class='sequence' id='seq<?php echo $i; ?>' value=<?php echo intval($sequences['sequence'][$i]/$metadiverses['references']);?> <?php echo $cache;?>>
 					<div class='sequencenum'><?php echo str_pad($sequences['num'][$i],  2, "0", STR_PAD_LEFT); ?></div>
-					<div class='sequencetitre'><a onClick="change_class('seq<?php echo $i; ?>', <?php echo intval($sequences['sequence'][$i]/intval($vars['references']));?>)" title='<?php echo $sequences['descr'][$i];?>'><?php echo $sequences['descr'][$i];?></a></div>
-					<div class='sequenceduree'><?php echo (get_temps($sequences['duree'][$i], $vars['references']));?></div>
+					<div class='sequencetitre'><a onClick="change_class('seq<?php echo $i; ?>', <?php echo intval($sequences['sequence'][$i]/intval($metadiverses['references']));?>)" title='<?php echo $sequences['descr'][$i];?>'><?php echo $sequences['descr'][$i];?></a></div>
+					<div class='sequenceduree'><?php echo (get_temps($sequences['duree'][$i], $metadiverses['references']));?></div>
 					<div></div>
 				</div>
         <?php endfor; ?>

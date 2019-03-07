@@ -17,11 +17,11 @@
 		<img />
     </article>
 </section>
-<div class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
-	<h2><?php echo $this->params->get('page_title');  ?></h2>
+<header class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 	<a class="bouton" href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Retour aux notices</a>
-</div>
-<h3><?php echo $this->item->title; ?></h3>
+    <h2><?php echo $this->params->get('page_title');  ?></h2>
+    <h3><?php echo $this->item->title; ?></h3>
+</header>
 <main class="contentpane">
     <section id="notice" class="partage">
 		<?php if(isset($this->item->description)) : ?>

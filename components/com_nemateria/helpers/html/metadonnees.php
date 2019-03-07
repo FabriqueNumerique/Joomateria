@@ -64,19 +64,19 @@
 			
             <li><span class='bleu'>Référence</span> : <?php  echo $liens[0]; ?></li>
 			
-			<?php if(strlen($metadiverses['medium']) > 0) : ?>
+			<?php if(isset($metadiverses['medium']) && strlen($metadiverses['medium']) > 0) : ?>
             	<li><span class='bleu'>Nature du support original</span> : <?php echo $metadiverses['medium']; ?></li>
 			<?php endif; ?>
 			
-			<?php if(strlen($metadiverses['hasFormat']) > 0) : ?>
+			<?php if(isset($metadiverses['hasFormat']) && strlen($metadiverses['hasFormat']) > 0) : ?>
             	<li><span class='bleu'>Format du master numérique</span> : <?php echo $metadiverses['hasFormat']; ?></li>
 			<?php endif; ?>
 			
-			<?php if(strlen($metadiverses['dateCopyrighted']) > 0) : ?>
+			<?php if(isset($metadiverses['dateCopyrighted']) && strlen($metadiverses['dateCopyrighted']) > 0) : ?>
             	<li><span class='bleu'>Propriétaire des supports originaux</span> : <?php echo $metadiverses['dateCopyrighted']; ?></li>
 			<?php endif; ?>
 			
-			<?php if(strlen($metadiverses['rightsHolder']) > 0) : ?>
+			<?php if(isset($metadiverses['rightsHolder']) && strlen($metadiverses['rightsHolder']) > 0) : ?>
             	<li><span class='bleu'>Détenteur des droits</span> : <?php echo $metadiverses['rightsHolder']; ?></li>
 			<?php endif; ?>
 			

@@ -7,5 +7,6 @@
 <file name="loader.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131705231130000000" remote="131705231130000000" Dst="1" />
 <file name="jquery.bxslider.min.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131676055060000000" remote="131676055060000000" Dst="1" />
 <file name="jquery.bxslider.css" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131676167240000000" remote="131676167240000000" Dst="1" />
-<file name="nemateria.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131903913545574218" remote="131903913560000000" Dst="1" />
+<file name="nemateria.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131959280329556324" remote="131959280360000000" Dst="1" />
+<file name="jquery.lazy.min.js" server="ssh.cluster010.ovh.net/www/dev/immat/35/" local="131959204759918352" remote="131959214120000000" Dst="1" />
 </dwsync>

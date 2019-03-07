@@ -67,6 +67,11 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 		console.log(e.target);
 	});
+	
+	// Afficher les images en lazy load
+	if(jQuery().lazy){
+		$('div.lazy').lazy();
+	}
 });
 
 // sauvegarder les valeurs des positions des séquences

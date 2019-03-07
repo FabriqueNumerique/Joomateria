@@ -62,7 +62,11 @@ class NemateriaHelperUtils
 	}
 	// FILTRER LES VALEURS POUR CREER DES TABLEAUX POUR LES SEQUENCAGES DES PLAYERS
 	public static function filtre($tab, $duree='44100'){
+		
+		$n = count($tab); // Longueur du tableau
+		
 		$sequences = array();
+		
 		$seq = array();
 		$duree = array();
 		$num = array();
@@ -72,21 +76,26 @@ class NemateriaHelperUtils
 			if(strpos($v, 'isVersionOf') !== false){
 				// Le nombre de millisecondes de la séquence
 				array_push($seq, substr($v, 12, strlen($v)));
+				
 			} else if(strpos($v, 'hasVersion') !== false){
 				// La durée de la séquence
 				array_push($duree, intval(substr($v, 11, strlen($v))));
+				
 			}else if(strpos($v, 'replaces') !== false){
-				// Test pour vérifier la présence d'une chaine de caractères dans la variable qui définit le numéro des séquences
-				// if(intval(substr($v, 10, strlen($v))) != 0){
-					array_push($num, substr($v, 9, strlen($v)));
-				/*}else{
-					array_push($num, substr($v, 14, strlen($v)));
-				}*/
+				// Test pour vérifier la présence d'une chaine
+				array_push($num, substr($v, 9, strlen($v)));
+				
 			}else if(strpos($v, 'isReplacedBy') !== false){
 				// Le texte lié à la séquence - intègre les liens pour une synchro avec des documents
 				array_push($descr, substr($v, 13, strlen($v)));
 			};
 		}
+		
+		array_pad( $duree, count($seq), 0 );
+		array_pad( $num, count($seq), '' );
+		array_pad( $descr, count($seq), '' );
+		
+		
 		$sequences = array(
 			'sequence' => $seq,
 			'duree' => $duree,
@@ -211,16 +220,12 @@ class NemateriaHelperUtils
         }
     }
     // Paramétrer la classe d'une série
-    public static function setSerieClasse($url, $serie){
-        echo strpos($url, $serie);
-        $pos = strpos($url, $serie);
-        echo $pos;
-        
-        if($pos === false){
-            return 'rose';
-        }else{
-            return 'vert';
-        }
+    public static function setSerieClasse($actu, $serie){
+        if($actu == $serie){
+			return 'vert';
+		}else{
+			return 'rose';
+		}
     }
 	// Vérifier qu'il s'agit d'un lien http complet
 	public static function verif_http($lien){
